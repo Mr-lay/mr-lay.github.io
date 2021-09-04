@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://mr-lay.github.io">
-  <title>python切片 | lay的博客</title>
+  <title>DNS-Python | lay的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="python切片基础用法12345list &#x3D; [1, 4, 5, 6, 7, 9, 11, 14, 16]list[start:end:step]list[1:7:2]list[1:-2:2]list[::-1] #翻转数组  从序列的第start位索引起，向右取到后end位元素为止，按step间隔过滤 。  可省略值，分别表示从开头取、取到末尾、间隔为1 当索引为负数，表示反过来（从右往左）计">
+  <meta name="description" content="Dnspython 是 Python 的 DNS 工具包。它可用于查询、区域传输、动态更新、名称服务器测试和许多其他事情。 Dnspython 提供对 DNS 的高级和低级访问。高级类对给定名称、类型和类的数据执行查询，并返回答案集。低级类允许直接操作 DNS 区域、消息、名称和记录。几乎支持所有 RR 类型。 dnspython 起源于 Nominum，它是为测试 DNS 名称服务器而开发的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python切片">
-<meta property="og:url" content="https://mr-lay.github.io/2021/09/02/python%E5%88%87%E7%89%87/index.html">
+<meta property="og:title" content="DNS-Python">
+<meta property="og:url" content="https://mr-lay.github.io/2021/09/04/DNS-Python/index.html">
 <meta property="og:site_name" content="lay的博客">
-<meta property="og:description" content="python切片基础用法12345list &#x3D; [1, 4, 5, 6, 7, 9, 11, 14, 16]list[start:end:step]list[1:7:2]list[1:-2:2]list[::-1] #翻转数组  从序列的第start位索引起，向右取到后end位元素为止，按step间隔过滤 。  可省略值，分别表示从开头取、取到末尾、间隔为1 当索引为负数，表示反过来（从右往左）计">
+<meta property="og:description" content="Dnspython 是 Python 的 DNS 工具包。它可用于查询、区域传输、动态更新、名称服务器测试和许多其他事情。 Dnspython 提供对 DNS 的高级和低级访问。高级类对给定名称、类型和类的数据执行查询，并返回答案集。低级类允许直接操作 DNS 区域、消息、名称和记录。几乎支持所有 RR 类型。 dnspython 起源于 Nominum，它是为测试 DNS 名称服务器而开发的。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-09-02T14:46:11.000Z">
-<meta property="article:modified_time" content="2021-09-03T07:39:10.954Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210621201606943.png">
+<meta property="article:published_time" content="2021-09-04T12:52:51.000Z">
+<meta property="article:modified_time" content="2021-09-04T12:53:45.005Z">
 <meta property="article:author" content="lay">
-<meta property="article:tag" content="Python 切片">
+<meta property="article:tag" content="DNS, Python">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210621201606943.png">
   
     <link rel="alternative" href="/atom.xml" title="lay的博客" type="application/atom+xml">
   
@@ -147,51 +149,80 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python切片" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-DNS-Python" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      python切片
+      DNS-Python
     </h1>
   
 
         
-        <a href="/2021/09/02/python%E5%88%87%E7%89%87/" class="archive-article-date">
-  	<time datetime="2021-09-02T14:46:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
+        <a href="/2021/09/04/DNS-Python/" class="archive-article-date">
+  	<time datetime="2021-09-04T12:52:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="python切片"><a href="#python切片" class="headerlink" title="python切片"></a>python切片</h2><h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">14</span>, <span class="number">16</span>]</span><br><span class="line"><span class="built_in">list</span>[start:end:step]</span><br><span class="line"><span class="built_in">list</span>[<span class="number">1</span>:<span class="number">7</span>:<span class="number">2</span>]</span><br><span class="line"><span class="built_in">list</span>[<span class="number">1</span>:-<span class="number">2</span>:<span class="number">2</span>]</span><br><span class="line"><span class="built_in">list</span>[::-<span class="number">1</span>] <span class="comment">#翻转数组</span></span><br></pre></td></tr></table></figure>
+        <p>Dnspython 是 Python 的 DNS 工具包。它可用于查询、区域传输、动态更新、名称服务器测试和许多其他事情。</p>
+<p>Dnspython 提供对 DNS 的高级和低级访问。高级类对给定名称、类型和类的数据执行查询，并返回答案集。低级类允许直接操作 DNS 区域、消息、名称和记录。几乎支持所有 RR 类型。</p>
+<p>dnspython 起源于 Nominum，它是为测试 DNS 名称服务器而开发的。</p>
+<h2 id="DNS-rdtype"><a href="#DNS-rdtype" class="headerlink" title="DNS rdtype"></a>DNS rdtype</h2><p>RR : <a target="_blank" rel="noopener" href="https://www.ibm.com/docs/zh/i/7.2?topic=concepts-dns-resource-records">域名系统资源记录</a></p>
+<p>rdtype是指  指定RR资源的类型</p>
+<p>常用的有以下几种:</p>
+<p>A记录：将主机名转换成IP地址<br>MX记录：邮件交换记录，定义邮件服务器的域名<br>CNAME记录：别名记录，实现域名间的映射<br>NS记录：标记区域的域名服务器及授权子域<br>PTR记录：反向解析，与A记录相反，将IP地址转换为主机名<br>SOA记录：SOA标记，一个起始授权区的定义</p>
+<h2 id="DNS-Messages"><a href="#DNS-Messages" class="headerlink" title="DNS Messages"></a>DNS Messages</h2><p>dns.message.Message 类及其子类的对象表示单个 DNS 消息，如<a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc1035">RFC 1035</a>及其许多更新和扩展所定义。</p>
+<p>该模块提供用于构建和操作消息的工具。还支持 TSIG 签名和 EDNS。消息可以转储为文本形式，也可以从该形式中读取。</p>
+<p>classdns.message.Message(<em>id=None</em>)</p>
+<p>一条 DNS 消息。</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210621201606943.png" alt="image-20210621201606943"></p>
+<p>sections : 1. question 2. answer 3. authority 4. additional</p>
+<p>question : domain 、 rclass 、rdtype</p>
+<p>answer :  domain、 int、 rclass、 rdtype（cname或者A或者AAAA） 、address这个可以是域名或IP</p>
+<h3 id="dns-message-make-query"><a href="#dns-message-make-query" class="headerlink" title="dns.message.make_query"></a>dns.message.make_query</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dns.message.make_query( qname , rdtype , rdclass=&lt;RdataClass.IN: <span class="number">1</span>&gt; , use_edns=<span class="literal">None</span> , want_dnssec=<span class="literal">False</span> , ednsflags=<span class="literal">None</span> , payload=<span class="literal">None</span> , request_payload=<span class="literal">None</span> , options=<span class="literal">None</span> , idna_codec=<span class="literal">None</span> )</span><br></pre></td></tr></table></figure>
 
-<p><strong>从序列的第start位索引起，向右取到后end位元素为止，按step间隔过滤</strong> 。</p>
-<ol>
-<li>可省略值，分别表示从开头取、取到末尾、间隔为1</li>
-<li>当索引为负数，表示反过来（从右往左）计算索引位置</li>
-<li>当间隔（步长）为负数，表示从end开始取值知道start，翻转数组可以使用list[::-1]</li>
-<li>索引可以越界不报错，但是步长不能为0，否则会报错<code>ValueError: slice step cannot be zero</code></li>
-</ol>
-<h3 id="切片是浅拷贝对象"><a href="#切片是浅拷贝对象" class="headerlink" title="切片是浅拷贝对象"></a>切片是浅拷贝对象</h3><p>切片操作返回结果是一个独立对象，但是切片拷贝时仅仅只是浅拷贝</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">14</span>, [<span class="number">16</span>]]</span><br><span class="line">l1 = l[<span class="number">2</span>:<span class="number">4</span>]</span><br><span class="line">l2 = l[<span class="number">8</span>:]</span><br><span class="line">l1.append(<span class="number">0</span>)</span><br><span class="line">l2[<span class="number">0</span>].append(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(l)</span><br><span class="line"><span class="comment"># [1, 4, 5, 6, 7, 9, 11, 14, [16, 0]]</span></span><br></pre></td></tr></table></figure>
+<p>发出查询消息。</p>
+<p>查询名称、类型和类都可以指定为适当类型的对象或字符串。</p>
+<p>查询将有一个随机选择的查询 ID，其 DNS 标志将设置为 dns.flags.RD。</p>
+<p>qname, a dns.name.Nameor str, 查询名称。</p>
+<p>rdtype，一个intor str，所需的 rdata 类型。</p>
+<p>rdclass，一个intor str，所需的 rdata 类；默认为 IN 类。</p>
+<p>use_edns，一个int，bool或None。要使用的 EDNS 级别；默认为无（无 EDNS）。有关 use_edns 的可能值及其含义，请参阅 dns.message.Message.use_edns() 的说明。</p>
+<p>want_dnssec，一个bool。如果True，则需要 DNSSEC 数据。</p>
+<p>ednsflags， an int，EDNS 标志值。</p>
+<p>payload， an int，是 EDNS 发送方的有效载荷字段，它是发送方可以处理的 UDP 数据报的最大大小。即对该消息的响应有多大。</p>
+<p>request_payload，一个int，是EDNS有效载荷大小发送此消息时使用。如果未指定，则默认为payload的值 。</p>
+<p>options、dns.edns.Option对象列表或NoneEDNS 选项。</p>
+<p>idna_codec， a dns.name.IDNACodec，指定 IDNA 编码器/解码器。如果None，则使用默认的 IDNA 2003 编码器/解码器。</p>
+<p>返回一个 dns.message.QueryMessage</p>
+<h3 id="dns-message-QueryMessage-类"><a href="#dns-message-QueryMessage-类" class="headerlink" title="dns.message.QueryMessage 类"></a>dns.message.QueryMessage 类</h3><p><code>dns.message.QueryMessage</code>类用于普通的DNS查询信息</p>
+<h2 id="Message-EDNS-Options"><a href="#Message-EDNS-Options" class="headerlink" title="Message EDNS Options"></a>Message EDNS Options</h2><p>EDNS 允许更大的消息，并为协议提供扩展机制。EDNS<em>选项</em>是类型化数据，处理方式与 Rdata 非常相似。例如，如果 dnsython在解析 DNS 有线格式消息时遇到 EDNS ECS 选项代码，它将创建一个dns.edns.ECSOption对象来表示它。</p>
+<h3 id="classdns-edns-Option-otype"><a href="#classdns-edns-Option-otype" class="headerlink" title="classdns.edns.Option(otype)"></a>classdns.edns.Option(<em>otype</em>)</h3><p>所有 EDNS 选项类型的基类。</p>
+<h3 id="dns-edns-ECSOption"><a href="#dns-edns-ECSOption" class="headerlink" title="dns.edns.ECSOption"></a>dns.edns.ECSOption</h3><p>EDNS 客户端子网（ECS、RFC7871）</p>
+<p>ECS（EDNS-Client-Subnet）是DNS服务支持的新协议，该协议会在DNS请求包中附加用户IP地址。这样，DNS服务器可以根据该用户IP地址而不是递归服务器的IP地址返回给用户更近的服务器IP地址，使客户能够实现就近访问，该项技术当前广泛应用于CDN加速应用中。</p>
+<p>客户服务器或者家用电脑等设备所在的节点是上海电信，但是因为某些原因客户配置的DNS服务器IP是福建泉州网通的的DNS服务器IP地址。当泉州网通的DNS递归服务器为这个上海节点的服务器提供解析服务的时候（即客户请求这个泉州网通的DNS递归服务器），如果泉州网通的DNS递归服务器请求的权威DNS服务器不支持ECS协议，则权威DNS服务器会给泉州网通的DNS递归服务器返回距离泉州网通最近的解析记录（比如厦门网通），则客户会根据解析结果从上海电信访问到厦门网通的资源。如果泉州网通的DNS递归服务器请求的权威DNS服务器支持ECS协议，则权威DNS服务器会根据携带过来的用户IP判断归属，给泉州网通的DNS递归服务器返回距离上海电信最近的解析记录（比如上海电信），则客户会根据解析结果从上海电信直接访问上海电信的资源。此种场景可以避免客户配置错误的DNS服务器IP而导致CDN加速效果差的问题。</p>
+<h2 id="DNS-query"><a href="#DNS-query" class="headerlink" title="DNS.query"></a>DNS.query</h2><p>该<code>dns.query</code>模块用于向 DNS 服务器发送消息，并处理它们的响应。如果您想要“存根解析器”行为，那么您应该使用更高级别的<code>dns.resolver</code>模块；请参阅<a target="_blank" rel="noopener" href="https://dnspython.readthedocs.io/en/stable/resolver.html#resolver">存根解析器</a>。</p>
+<p>对于 UDP 和 TCP，该模块提供单一的“无所不能”查询功能，并且还为应用程序使用更复杂的 I/O 处理的情况分别提供该功能的发送和接收部分。</p>
+<h3 id="dns-query-udp"><a href="#dns-query-udp" class="headerlink" title="dns.query.udp"></a>dns.query.udp</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dns.query.udp( q , where , timeout=<span class="literal">None</span> , port=<span class="number">53</span> , source=<span class="literal">None</span> , source_port=<span class="number">0</span> , ignore_unexpected=<span class="literal">False</span> , one_rr_per_rrset=<span class="literal">False</span> , ignore_trailing=<span class="literal">False</span> , raise_on_truncation=<span class="literal">False</span> , sock=<span class="literal">None</span> )</span><br></pre></td></tr></table></figure>
 
-<p>如果拷贝中有引用传递，更改拷贝列表中的引用元素会影响到原列表</p>
-<p>切片*拷贝也是浅拷贝，常用来复制数组，生成嵌套数组时，应该用下面这种方式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">3</span></span><br><span class="line">matrix = [[<span class="number">0</span>] * n] * n</span><br><span class="line"><span class="built_in">print</span>(matrix) </span><br><span class="line"><span class="comment"># [[0, 0, 0], [0, 0, 0], [0, 0, 0]]</span></span><br><span class="line">matrix[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">3</span> <span class="comment"># 修改一个值影响到了其他值，是因为浅拷贝引用传递的原因</span></span><br><span class="line"><span class="built_in">print</span>(matrix)</span><br><span class="line"><span class="comment"># [[0, 3, 0], [0, 3, 0], [0, 3, 0]]</span></span><br><span class="line">matrix2 = [[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="comment"># t</span></span><br><span class="line"><span class="built_in">print</span>(matrix2)</span><br><span class="line"><span class="comment"># [[0, 0, 0], [0, 0, 0], [0, 0, 0]]</span></span><br><span class="line">matrix2[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(matrix2)</span><br><span class="line"><span class="comment"># [[0, 0, 0], [0, 3, 0], [0, 0, 0]]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h3><p>python切片如果截取不存在的位置，会返回空数组</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(l[:<span class="number">0</span>],l[<span class="built_in">len</span>(l):],l[<span class="number">3</span>:<span class="number">3</span>],l[<span class="number">10</span>:<span class="number">13</span>])</span><br><span class="line"><span class="comment"># [] [] [] []</span></span><br></pre></td></tr></table></figure>
-
-<p>当对这些切片赋值时，等于插入在这些位置上</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">l[:<span class="number">0</span>] = [<span class="number">0</span>]</span><br><span class="line">l[<span class="built_in">len</span>(l):] = [<span class="number">0</span>]</span><br><span class="line">l[<span class="number">3</span>:<span class="number">3</span>] = [<span class="number">0</span>]</span><br><span class="line">l[<span class="number">99</span>:<span class="number">101</span>] = [<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(l), l)</span><br><span class="line"><span class="comment"># 14 [0, 1, 4, 0, 5, 6, 7, 9, 11, 14, [16], 0, 0, 0]</span></span><br></pre></td></tr></table></figure>
-
-<p>注意只能赋可迭代对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;C:/Users/lxl/PycharmProjects/leetcode/listDemo.py&quot;</span>, line <span class="number">15</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    l[:<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">TypeError: can only assign an iterable</span><br></pre></td></tr></table></figure>
-
+<p>返回通过 UDP 发送查询后获得的响应。</p>
+<p>q , a dns.message.Message，要发送的查询</p>
+<p>where, str, 包含 IPv4 或 IPv6 地址 ，发送消息的位置。</p>
+<p>timeout， afloat或None，查询超时前等待的秒数。如果None，默认值，永远等待。</p>
+<p>port , an int，将消息发送到的端口。默认值为 53。</p>
+<p>source，str包含 IPv4 或 IPv6 地址的 ，指定源地址。默认为通配符地址。</p>
+<p>source_port， an int，发送消息的端口。默认值为 0。</p>
+<p>ignore_unexpected，一个bool。如果True，则忽略来自意外来源的响应。</p>
+<p>one_rr_per_rrset，一个bool。如果True，则将每个 RR 放入其自己的 RRset。</p>
+<p>ignore_trailing，一个bool。如果True，则忽略接收消息末尾的尾随垃圾。</p>
+<p>raise_on_truncation，一个bool。如果True，如果设置了 TC 位，则引发异常。</p>
+<p>sock、 asocket.socket或None，用于查询的套接字。如果None，默认情况下，会创建一个套接字。请注意，如果提供了套接字，则它必须是非阻塞数据报套接字，并且忽略source和source_port。</p>
+<p>返回一个dns.message.Message.</p>
 
       
 
@@ -226,7 +257,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Python 切片</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">DNS, Python</a>
         		</li>
       		
 		</ul>
@@ -282,7 +313,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://mr-lay.github.io/2021/09/02/python%E5%88%87%E7%89%87/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://mr-lay.github.io/2021/09/04/DNS-Python/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +327,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/09/02/%E7%9F%A5%E8%AF%86%E9%93%BE%E6%8E%A5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          前端知识链接
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/08/31/%E6%8A%95%E9%80%92/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">投递</div>
+    <a href="/2021/09/04/kafka/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">kafka</div>
       <i class="icon-circle-right"></i>
     </a>
   
