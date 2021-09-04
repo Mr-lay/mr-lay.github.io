@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://mr-lay.github.io">
   <title>hexo部署报错 | lay的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="报错1 OpenSSL SSL_read: Connection was reset, errno 10054  解决办法：取消ssl验证 $ git config –global http.sslVerify “false” 报错2Failed to connect to github.com port 443: Timed out  解决办法：取消代理 $ git config –global">
+  <meta name="description" content="报错1 OpenSSL SSL_read: Connection was reset, errno 10054">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo部署报错">
 <meta property="og:url" content="https://mr-lay.github.io/2021/09/02/hexo%E9%83%A8%E7%BD%B2%E6%8A%A5%E9%94%99/index.html">
 <meta property="og:site_name" content="lay的博客">
-<meta property="og:description" content="报错1 OpenSSL SSL_read: Connection was reset, errno 10054  解决办法：取消ssl验证 $ git config –global http.sslVerify “false” 报错2Failed to connect to github.com port 443: Timed out  解决办法：取消代理 $ git config –global">
+<meta property="og:description" content="报错1 OpenSSL SSL_read: Connection was reset, errno 10054">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/image-20210902233431155.png">
 <meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/image-20210902233601492.png">
 <meta property="article:published_time" content="2021-09-02T15:33:00.000Z">
-<meta property="article:modified_time" content="2021-09-04T13:06:01.865Z">
+<meta property="article:modified_time" content="2021-09-04T13:21:06.126Z">
 <meta property="article:author" content="lay">
 <meta property="article:tag" content="随笔">
 <meta property="article:tag" content="踩坑">
@@ -84,6 +84,12 @@
     			
             
 		</nav>
+		<nav>
+			<ul style="font-size:12px; font-style:oblique; font-weight:100">
+				总文章数：11
+			</ul>
+		</nav>
+		<br/>
 		<nav class="header-nav">
 			<div class="social">
 				
@@ -99,7 +105,7 @@
 		        
 			</div>
 		</nav>
-	</header>		
+	</header>
 </div>
 
     </div>
@@ -186,6 +192,8 @@
       
         <h4 id="报错1"><a href="#报错1" class="headerlink" title="报错1"></a>报错1</h4><p> OpenSSL SSL_read: Connection was reset, errno 10054</p>
 <p><img src="https://gitee.com/git_for_li/image-repo/raw/master/images/image-20210902233431155.png" alt="image-20210902233431155"></p>
+<span id="more"></span>
+
 <p>解决办法：取消ssl验证</p>
 <p>$ git config –global http.sslVerify “false”</p>
 <h4 id="报错2"><a href="#报错2" class="headerlink" title="报错2"></a>报错2</h4><p>Failed to connect to github.com port 443: Timed out</p>
@@ -300,6 +308,11 @@
       <div class="clearfix"></div>
     </div>
   </div>
+    
+        <span class="archive-article-date">
+			阅读量 <span id="busuanzi_value_page_pv"></span>
+		</span>
+    
 </article>
 
   
@@ -342,7 +355,7 @@
 
 
   
-  
+
   
 
   
@@ -366,7 +379,17 @@
       	</div>
     </div>
   </div>
+	<div calss="count-span">
+		<span id="busuanzi_container_site_pv">
+			总访问量: <span id="busuanzi_value_site_pv"></span>次|
+		</span>
+		<span id="busuanzi_container_site_uv">
+			总访客量: <span id="busuanzi_value_site_uv"></span>人次
+		</span>
+	</div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </footer>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -442,18 +465,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
@@ -471,6 +482,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">高并发高负载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://mr-lay.github.io">
   <title>vue3的新特性与语法 | lay的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vue3对比vue2的新特性一、vue3 的性能提升 重写了虚拟Dom的实现（且保证了兼容性，脱离模版的渲染需求旺盛）。 编译模板的优化。 更高效的组件初始化。 update性能提高1.3~2倍。 mount性能提高1.3-1.5倍 SSR速度提高了2~3倍。   1.1 编译模板的优化传统VdomVue提供类似于HTML的模板语法，将模板编译为可返回虚拟DOM树的呈现函数。通过DIFF算法，递归">
+  <meta name="description" content="vue3对比vue2的新特性一、vue3 的性能提升 重写了虚拟Dom的实现（且保证了兼容性，脱离模版的渲染需求旺盛）。 编译模板的优化。 更高效的组件初始化。 update性能提高1.3~2倍。 mount性能提高1.3-1.5倍 SSR速度提高了2~3倍。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue3的新特性与语法">
 <meta property="og:url" content="https://mr-lay.github.io/2021/08/29/vue3%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%8E%E8%AF%AD%E6%B3%95/index.html">
 <meta property="og:site_name" content="lay的博客">
-<meta property="og:description" content="vue3对比vue2的新特性一、vue3 的性能提升 重写了虚拟Dom的实现（且保证了兼容性，脱离模版的渲染需求旺盛）。 编译模板的优化。 更高效的组件初始化。 update性能提高1.3~2倍。 mount性能提高1.3-1.5倍 SSR速度提高了2~3倍。   1.1 编译模板的优化传统VdomVue提供类似于HTML的模板语法，将模板编译为可返回虚拟DOM树的呈现函数。通过DIFF算法，递归">
+<meta property="og:description" content="vue3对比vue2的新特性一、vue3 的性能提升 重写了虚拟Dom的实现（且保证了兼容性，脱离模版的渲染需求旺盛）。 编译模板的优化。 更高效的组件初始化。 update性能提高1.3~2倍。 mount性能提高1.3-1.5倍 SSR速度提高了2~3倍。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/63a4d617-ac00-496a-97b0-4cc7a3d2a228.png">
 <meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/0b63b4ed-74d8-4740-a201-9b5930f66aa4.jpg">
@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/c99f57a9-83ad-4d1b-9a31-9cc238801f61.png">
 <meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/cbbe79e8-e5d4-4359-ab24-406f2f098852.png">
 <meta property="article:published_time" content="2021-08-29T13:26:31.043Z">
-<meta property="article:modified_time" content="2021-09-04T13:07:42.463Z">
+<meta property="article:modified_time" content="2021-09-04T13:21:47.123Z">
 <meta property="article:author" content="lay">
 <meta property="article:tag" content="vue3">
 <meta name="twitter:card" content="summary">
@@ -104,6 +104,12 @@
     			
             
 		</nav>
+		<nav>
+			<ul style="font-size:12px; font-style:oblique; font-weight:100">
+				总文章数：11
+			</ul>
+		</nav>
+		<br/>
 		<nav class="header-nav">
 			<div class="social">
 				
@@ -119,7 +125,7 @@
 		        
 			</div>
 		</nav>
-	</header>		
+	</header>
 </div>
 
     </div>
@@ -212,6 +218,9 @@
 <li>mount性能提高1.3-1.5倍</li>
 <li>SSR速度提高了2~3倍。</li>
 </ul>
+<span id="more"></span>
+
+
 <p><img src="https://gitee.com/git_for_li/image-repo/raw/master/images/63a4d617-ac00-496a-97b0-4cc7a3d2a228.png" alt="vue3与vue2性能对比"></p>
 <h3 id="1-1-编译模板的优化"><a href="#1-1-编译模板的优化" class="headerlink" title="1.1 编译模板的优化"></a>1.1 编译模板的优化</h3><h4 id="传统Vdom"><a href="#传统Vdom" class="headerlink" title="传统Vdom"></a>传统Vdom</h4><p><img src="https://gitee.com/git_for_li/image-repo/raw/master/images/0b63b4ed-74d8-4740-a201-9b5930f66aa4.jpg"><br>Vue提供类似于HTML的模板语法，将模板编译为可返回虚拟DOM树的呈现函数。通过DIFF算法，递归遍历两个虚拟DOM树并比较每个节点上的每个属性来确定实际DOM的哪些部分需要更新。</p>
 <p>传统 vdom 的性能跟模版大小正相关，跟动态节点的数量无关。在一些组件整个模版内只有少量动态节点的情况下，<strong>这些遍历都是性能的浪费</strong>。</p>
@@ -402,6 +411,11 @@
       <div class="clearfix"></div>
     </div>
   </div>
+    
+        <span class="archive-article-date">
+			阅读量 <span id="busuanzi_value_page_pv"></span>
+		</span>
+    
 </article>
 
   
@@ -439,7 +453,7 @@
 
 
   
-  
+
   
 
   
@@ -463,7 +477,17 @@
       	</div>
     </div>
   </div>
+	<div calss="count-span">
+		<span id="busuanzi_container_site_pv">
+			总访问量: <span id="busuanzi_value_site_pv"></span>次|
+		</span>
+		<span id="busuanzi_container_site_uv">
+			总访客量: <span id="busuanzi_value_site_uv"></span>人次
+		</span>
+	</div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </footer>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -539,18 +563,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
@@ -568,6 +580,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">高并发高负载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">

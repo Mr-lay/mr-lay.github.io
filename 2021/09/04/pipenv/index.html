@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="https://mr-lay.github.io">
   <title>pipenv | lay的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Pipenv是官方推荐的的python包管理工具，可以实现项目之间依赖的隔离。 安装pip install pipenv 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374">
+  <meta name="description" content="Pipenv是官方推荐的的python包管理工具，可以实现项目之间依赖的隔离。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pipenv">
 <meta property="og:url" content="https://mr-lay.github.io/2021/09/04/pipenv/index.html">
 <meta property="og:site_name" content="lay的博客">
-<meta property="og:description" content="Pipenv是官方推荐的的python包管理工具，可以实现项目之间依赖的隔离。 安装pip install pipenv 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374">
+<meta property="og:description" content="Pipenv是官方推荐的的python包管理工具，可以实现项目之间依赖的隔离。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210809152122745.png">
 <meta property="article:published_time" content="2021-09-04T12:25:14.000Z">
-<meta property="article:modified_time" content="2021-09-04T13:07:18.805Z">
+<meta property="article:modified_time" content="2021-09-04T13:21:21.386Z">
 <meta property="article:author" content="lay">
 <meta property="article:tag" content="随笔">
 <meta property="article:tag" content="pipenv">
@@ -82,6 +82,12 @@
     			
             
 		</nav>
+		<nav>
+			<ul style="font-size:12px; font-style:oblique; font-weight:100">
+				总文章数：11
+			</ul>
+		</nav>
+		<br/>
 		<nav class="header-nav">
 			<div class="social">
 				
@@ -97,7 +103,7 @@
 		        
 			</div>
 		</nav>
-	</header>		
+	</header>
 </div>
 
     </div>
@@ -183,6 +189,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Pipenv是官方推荐的的python包管理工具，可以实现项目之间依赖的隔离。</p>
+<span id="more"></span>
+
 <p>安装<code>pip install pipenv</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">Usage: pipenv [OPTIONS] COMMAND [ARGS]...</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  --<span class="built_in">where</span>                         Output project home information.</span><br><span class="line">  --venv                          Output virtualenv information.</span><br><span class="line">  --py                            Output Python interpreter information.</span><br><span class="line">  --envs                          Output Environment Variable options.</span><br><span class="line">  --rm                            Remove the virtualenv.</span><br><span class="line">  --bare                          Minimal output.</span><br><span class="line">  --completion                    Output completion (to be executed by the</span><br><span class="line">                                  shell).</span><br><span class="line"></span><br><span class="line">  --man                           Display manpage.</span><br><span class="line">  --support                       Output diagnostic information <span class="keyword">for</span> use <span class="keyword">in</span></span><br><span class="line">                                  GitHub issues.</span><br><span class="line"></span><br><span class="line">  --site-packages / --no-site-packages</span><br><span class="line">                                  Enable site-packages <span class="keyword">for</span> the virtualenv.</span><br><span class="line">                                  [env var: PIPENV_SITE_PACKAGES]</span><br><span class="line"></span><br><span class="line">  --python TEXT                   Specify <span class="built_in">which</span> version of Python virtualenv</span><br><span class="line">                                  should use.</span><br><span class="line"></span><br><span class="line">  --three / --two                 Use Python 3/2 when creating virtualenv.</span><br><span class="line">  --clear                         Clears caches (pipenv, pip, and pip-tools).</span><br><span class="line">                                  [env var: PIPENV_CLEAR]</span><br><span class="line"></span><br><span class="line">  -v, --verbose                   Verbose mode.</span><br><span class="line">  --pypi-mirror TEXT              Specify a PyPI mirror.</span><br><span class="line">  --version                       Show the version and <span class="built_in">exit</span>.</span><br><span class="line">  -h, --<span class="built_in">help</span>                      Show this message and <span class="built_in">exit</span>.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Usage Examples:</span><br><span class="line">   Create a new project using Python 3.7, specifically:</span><br><span class="line">   $ pipenv --python 3.7</span><br><span class="line"></span><br><span class="line">   Remove project virtualenv (inferred from current directory):</span><br><span class="line">   $ pipenv --rm</span><br><span class="line"></span><br><span class="line">   Install all dependencies <span class="keyword">for</span> a project (including dev):</span><br><span class="line">   $ pipenv install --dev</span><br><span class="line"></span><br><span class="line">   Create a lockfile containing pre-releases:</span><br><span class="line">   $ pipenv lock --pre</span><br><span class="line"></span><br><span class="line">   Show a graph of your installed dependencies:</span><br><span class="line">   $ pipenv graph</span><br><span class="line"></span><br><span class="line">   Check your installed dependencies <span class="keyword">for</span> security vulnerabilities:</span><br><span class="line">   $ pipenv check</span><br><span class="line"></span><br><span class="line">   Install a <span class="built_in">local</span> setup.py into your virtual environment/Pipfile:</span><br><span class="line">   $ pipenv install -e .</span><br><span class="line"></span><br><span class="line">   Use a lower-level pip <span class="built_in">command</span>:</span><br><span class="line">   $ pipenv run pip freeze</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  check      Checks <span class="keyword">for</span> PyUp Safety security vulnerabilities and against PEP</span><br><span class="line">             508 markers provided <span class="keyword">in</span> Pipfile.</span><br><span class="line"></span><br><span class="line">  clean      Uninstalls all packages not specified <span class="keyword">in</span> Pipfile.lock.</span><br><span class="line">  graph      Displays currently-installed dependency graph information.</span><br><span class="line">  install    Installs provided packages and adds them to Pipfile, or (<span class="keyword">if</span> no</span><br><span class="line">             packages are given), installs all packages from Pipfile.</span><br><span class="line"></span><br><span class="line">  lock       Generates Pipfile.lock.</span><br><span class="line">  open       View a given module <span class="keyword">in</span> your editor.</span><br><span class="line">  run        Spawns a <span class="built_in">command</span> installed into the virtualenv.</span><br><span class="line">   $ pipenv install -e .</span><br><span class="line"></span><br><span class="line">   Use a lower-level pip <span class="built_in">command</span>:</span><br><span class="line">   $ pipenv run pip freeze</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  check      Checks <span class="keyword">for</span> PyUp Safety security vulnerabilities and again</span><br><span class="line">st PEP</span><br><span class="line">             508 markers provided <span class="keyword">in</span> Pipfile.</span><br><span class="line"></span><br><span class="line">  clean      Uninstalls all packages not specified <span class="keyword">in</span> Pipfile.lock.</span><br><span class="line">  graph      Displays currently-installed dependency graph information</span><br><span class="line">.</span><br><span class="line">  install    Installs provided packages and adds them to Pipfile, or (</span><br><span class="line"><span class="keyword">if</span> no</span><br><span class="line">             packages are given), installs all packages from Pipfile.</span><br><span class="line"></span><br><span class="line">  lock       Generates Pipfile.lock.</span><br><span class="line">  open       View a given module <span class="keyword">in</span> your editor.</span><br><span class="line">  run        Spawns a <span class="built_in">command</span> installed into the virtualenv.</span><br><span class="line">  scripts    Lists scripts <span class="keyword">in</span> current environment config.</span><br><span class="line">  shell      Spawns a shell within the virtualenv.</span><br><span class="line">  sync       Installs all packages specified <span class="keyword">in</span> Pipfile.lock.</span><br><span class="line">  uninstall  Uninstalls a provided package and removes it from Pipfile.</span><br><span class="line">  update     Runs lock, <span class="keyword">then</span> sync.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -301,6 +309,11 @@
       <div class="clearfix"></div>
     </div>
   </div>
+    
+        <span class="archive-article-date">
+			阅读量 <span id="busuanzi_value_page_pv"></span>
+		</span>
+    
 </article>
 
   
@@ -343,7 +356,7 @@
 
 
   
-  
+
   
 
   
@@ -367,7 +380,17 @@
       	</div>
     </div>
   </div>
+	<div calss="count-span">
+		<span id="busuanzi_container_site_pv">
+			总访问量: <span id="busuanzi_value_site_pv"></span>次|
+		</span>
+		<span id="busuanzi_container_site_uv">
+			总访客量: <span id="busuanzi_value_site_uv"></span>人次
+		</span>
+	</div>
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </footer>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -443,18 +466,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DNS</a>
               </li>
              
@@ -472,6 +483,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">高并发高负载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">踩坑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
