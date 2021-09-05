@@ -207,33 +207,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="模块统一化的解决方案"><a href="#模块统一化的解决方案" class="headerlink" title="模块统一化的解决方案"></a>模块统一化的解决方案</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>项目的数据输入有许多来源，不同的来源的数据格式、类型区别很大，而且会有许多问题，所以需要对这些数据做处理，推送到统一的数据出口，才可以方便下一步的操作。</p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210905152811549.png" alt="image-20210905152811549"></p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>由于数据来源不同，因此现在基本上是针对每一个模块都做一个项目去处理，当模块多了起来后，管理和维护就变得麻烦起来，因此需要一个解决方案，去整合调度这些麻烦的模块</p>
-<h3 id="松耦合的任务调度模型"><a href="#松耦合的任务调度模型" class="headerlink" title="松耦合的任务调度模型"></a>松耦合的任务调度模型</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>由于项目是部署到一个个docker容器上，docker容器具有小、轻量便捷的优点，可以通过控制容器的<strong>环境变量</strong>，去控制不同的容器执行相应的任务，创建容器时，注入的环境变量，可以使用Python的os.getenv()方法，十分简单的获取，这样我们可以很轻松的创建<strong>有着不同环境变量的容器</strong>。</p>
-<p>我们可以把所有的零散模块整合在一个项目中，用统一的调度方法去调度环境变量中指定的模块，这样就实现了同一个项目，同一个构建部署流程，却有着不同的运转模式，是真正的“同项目不同工作”。</p>
-<h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><p>有了智研的容器环境变量后，我设计了一种<strong>松耦合的任务调度模型</strong>，使用flask_apscheduler控制调度哪个任务，yaml文件配置任务调度的细节。</p>
-<p>在加入一个调度任务时，只需要把需要执行的任务写入main()函数中，然后配置yaml文件，最后创建部署的容器的时候，执行PROJECT_NAME=project(项目名字)，其余一切都不用做，交给模型就可以了</p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210809210706992.png" alt="image-20210809210706992"></p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210809213531073.png" alt="image-20210809213531073"></p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><h5 id="统一管理项目"><a href="#统一管理项目" class="headerlink" title="统一管理项目"></a>统一管理项目</h5><p>本身上游数据就只能是一个项目，而不应该是许多零散的小项目，统一调度管理可以大大减少维护成本</p>
-<h5 id="模块与模块之间松耦合"><a href="#模块与模块之间松耦合" class="headerlink" title="模块与模块之间松耦合"></a>模块与模块之间松耦合</h5><p>在这个模型中，项目和项目之间不需要有任何联系，项目和模型之间也不需要有任何联系，简单的配置好yaml文件，加入环境变量，就可以实现轻松的任务调度</p>
-<h5 id="模块与模块公用lib库"><a href="#模块与模块公用lib库" class="headerlink" title="模块与模块公用lib库"></a>模块与模块公用lib库</h5><p>之前零散的项目模式，明明有许多相似代码和相同的封装好的Lib，但是却没有统一的管理的手段，导致调整了一个模块，就要再更换一次其他项目的模块，很是烦人</p>
-<p>现在把他们都放到一起，有一个公用的Lib库，可以增加代码复用，减少管理成本</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ol>
-<li>任务代码，放到分散的文件夹里，调度函数为main()，把要执行的任务放到里面</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210809213502272.png" alt="image-20210809213502272"></p>
-<ol start="2">
-<li>yaml配置，在项目根目录下配置yaml文件，如下</li>
-</ol>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">scan_domain:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">scan_domain.scan_domain</span></span><br><span class="line">  <span class="attr">job:</span></span><br><span class="line">    <span class="attr">id:</span> <span class="string">job1</span></span><br><span class="line">    <span class="attr">trigger:</span> <span class="string">interval</span></span><br><span class="line">    <span class="attr">seconds:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">project_name:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">路径</span></span><br><span class="line">  <span class="attr">job:</span></span><br><span class="line">    <span class="string">任务细节配置，配置项同flask_apscheduler的jobs</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>容器中填充变量，要执行多个调度任务，用逗号,分隔</li>
-</ol>
-<p>PROJECT_NAME=scan_domain</p>
-<p>完成上面三步，任务就可以按照想要的模式自动执行了</p>
-
+        
       
 
       
@@ -1322,14 +1296,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -1339,6 +1305,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1362,7 +1336,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vue3</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1374,15 +1356,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color5">vue3</a>
               </li>
              
               <li class="article-tag-list-item">
