@@ -79,7 +79,7 @@
 		</nav>
 		<nav>
 			<ul style="font-size:12px; font-style:oblique; font-weight:100">
-				总文章数：12
+				总文章数：13
 			</ul>
 		</nav>
 		<br/>
@@ -164,6 +164,281 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-电子商务安全与加密" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/27/%E7%94%B5%E5%AD%90%E5%95%86%E5%8A%A1%E5%AE%89%E5%85%A8%E4%B8%8E%E5%8A%A0%E5%AF%86/">投递</a>
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">8分</span>
+      </span>
+    </span>
+</div>
+
+        
+        
+        <a href="/2021/09/27/%E7%94%B5%E5%AD%90%E5%95%86%E5%8A%A1%E5%AE%89%E5%85%A8%E4%B8%8E%E5%8A%A0%E5%AF%86/" class="archive-article-date">
+  	<time datetime="2021-09-27T05:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+
+<h1 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h1><p>通常，古典密码都是以单个字母为作用对象的加密算法</p>
+<h2 id="简单古典密码"><a href="#简单古典密码" class="headerlink" title="简单古典密码"></a>简单古典密码</h2><h3 id="棋盘密码"><a href="#棋盘密码" class="headerlink" title="棋盘密码"></a>棋盘密码</h3><p>将26个字母对应成棋盘上的横纵坐标，密钥空间大小25！</p>
+<h3 id="移位密码"><a href="#移位密码" class="headerlink" title="移位密码"></a>移位密码</h3><p>把对应的英文字母向前或者向后移动固定位数，密钥空间大小26，若密钥key=0</p>
+<h3 id="仿射密码"><a href="#仿射密码" class="headerlink" title="仿射密码"></a>仿射密码</h3><p>移位密码的推广，移位的同时加上一个乘法，密钥空间大小12*26=312</p>
+<h3 id="代换密码"><a href="#代换密码" class="headerlink" title="代换密码"></a>代换密码</h3><p>26个英文字母的简单置换，密钥空间大小26！</p>
+<h3 id="维吉尼亚密码"><a href="#维吉尼亚密码" class="headerlink" title="维吉尼亚密码"></a>维吉尼亚密码</h3><p><strong>多表代换密码</strong>，通过使用多个密文字母替换同一个明文字母的方式消除字符的特性</p>
+<p>其实就是移位密码的高级版，把一个密钥换成了一个密钥组，密钥空间大小为26^m</p>
+<h3 id="置换密码"><a href="#置换密码" class="headerlink" title="置换密码"></a>置换密码</h3><p>分组消息，然后重新排列消息中元素的位置，不改变元素本身</p>
+<h3 id="Hill密码"><a href="#Hill密码" class="headerlink" title="Hill密码"></a>Hill密码</h3><h2 id="加密算法的评估"><a href="#加密算法的评估" class="headerlink" title="加密算法的评估"></a>加密算法的评估</h2><p>好的加密算法应该具有<strong>混淆性</strong>和<strong>扩散性</strong></p>
+<h3 id="混淆性"><a href="#混淆性" class="headerlink" title="混淆性"></a>混淆性</h3><p>加密法应隐藏所有的局部模式，将可能导致破解密钥的提示性信息特征进行隐藏</p>
+<h3 id="扩散性"><a href="#扩散性" class="headerlink" title="扩散性"></a>扩散性</h3><p>加密法应将密文的不同部分进行混合，使任何字符都不在原来的位置</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/images20210926160603.png" alt="image-20210926160538951"></p>
+<h1 id="分组密码"><a href="#分组密码" class="headerlink" title="分组密码"></a>分组密码</h1><h2 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h2><ol>
+<li>Zero填充算法，不足全部补0</li>
+<li>X923填充算法，前6个补0，末尾记录总字节数</li>
+<li>PKCS7，全部补总字节数</li>
+<li>ISO10126，前6个随机，末尾记录总字节数</li>
+</ol>
+<h2 id="Feistel分组密码"><a href="#Feistel分组密码" class="headerlink" title="Feistel分组密码"></a>Feistel分组密码</h2><h3 id="两个基本操作"><a href="#两个基本操作" class="headerlink" title="两个基本操作"></a>两个基本操作</h3><ul>
+<li><strong>扩散</strong>，使<strong>明文和密文</strong>之间的统计关系尽可能变得复杂</li>
+<li><strong>混淆</strong>，使<strong>密文和密钥</strong>之间的统计关系变得尽可能复杂</li>
+</ul>
+<h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926163033053.png" alt="image-20210926163033053" style="zoom:150%;" />
+
+<p>初始输入：长度2L的明文分组序列，初始密钥K</p>
+<ol>
+<li>明文序列一分为二，L<sub>0</sub>和R<sub>0</sub></li>
+<li>加密n轮，第i轮以第i-1轮的输出作为输入，同时还有初始密钥产生的子密钥K<sub>i</sub></li>
+<li>每轮加密操作如下<ul>
+<li>对R<sub>i-1</sub>使用轮函数F和子密钥K<sub>i</sub>进行变换</li>
+<li>将变换结果与L<sub>i-1</sub>进行异或运算，运算结果为R<sub>i</sub>输出</li>
+<li>直接将R<sub>i-1</sub>作为L<sub>i</sub>输出</li>
+</ul>
+</li>
+<li>最终组合L<sub>n</sub>和R<sub>n</sub>作为2L长度的密文</li>
+</ol>
+<img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926164130792.png" alt="image-20210926164130792" style="zoom:150%;" />
+
+<p>S操作：为每一个阶段产生一个子密钥</p>
+<p>T操作：核心操作，非线性运算，保证加密算法的安全性</p>
+<h3 id="Feistel分组密码的安全性"><a href="#Feistel分组密码的安全性" class="headerlink" title="Feistel分组密码的安全性"></a>Feistel分组密码的安全性</h3><ol>
+<li>分组大小，越大越高，常用64位</li>
+<li>子密钥大小，至少大于128位</li>
+<li>循环次数</li>
+<li>子密钥产生算法</li>
+<li>轮函数F</li>
+</ol>
+<p>安全性通常与加密效率成反比，所以在选择大小与复杂度时，需要权衡利弊</p>
+<h3 id="轮函数F"><a href="#轮函数F" class="headerlink" title="轮函数F"></a>轮函数F</h3><p>作用：对消息序列进行混淆操作</p>
+<p>基本准则：非线性，非线性程度越强，安全性能越高，攻击难度越大</p>
+<p>S-盒（替换盒）：输入序列的任何变动都是的输出序列产生看似随机的变动，并且是非线性的</p>
+<p>雪崩效应：任何输入位或密钥位与输出位之间不应该有任何联系</p>
+<p>严格的雪崩准则（SAC）：对于任何的i、j，当任何一个输入位i发生改变时，S-盒的任何输出位j的值发生改变的概率都为1/2</p>
+<p>位独立准则（BIC）：对任意的i、j、k，当任何一个输入位i发生改变时，输出位j和k的值应该独立的发生改变</p>
+<h2 id="数据加密标准——DES"><a href="#数据加密标准——DES" class="headerlink" title="数据加密标准——DES"></a>数据加密标准——DES</h2><p>DES是最广泛使用的一种分组密码算法</p>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926165422220.png" alt="image-20210926165422220"></p>
+<h3 id="加密流程"><a href="#加密流程" class="headerlink" title="加密流程"></a>加密流程</h3><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926165658141.png" alt="image-20210926165658141" style="zoom:150%;" />
+
+<ol>
+<li>初始置换IP，将64位明文一分为二</li>
+<li>16轮加密运算，函数f</li>
+<li>末尾置换IP<sup>-1</sup>得到最终密文</li>
+</ol>
+<h3 id="每轮加密操作"><a href="#每轮加密操作" class="headerlink" title="每轮加密操作"></a>每轮加密操作</h3><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926182148224.png" alt="image-20210926182148224"></p>
+<h4 id="三种盒"><a href="#三种盒" class="headerlink" title="三种盒"></a>三种盒</h4><ul>
+<li>扩充盒E-盒</li>
+<li>替换盒S-盒</li>
+<li>置换盒P-盒</li>
+</ul>
+<h4 id="具体加密操作"><a href="#具体加密操作" class="headerlink" title="具体加密操作"></a>具体加密操作</h4><ol>
+<li>把56位密钥等分成28位的两部分</li>
+<li>根据加密轮数，密钥循环左移一位或两位后合并</li>
+<li>从合并后的56位密钥中选出48位（压缩置换）</li>
+<li>将输入序列32位右半部分扩展成48位（扩展置换）</li>
+<li>两个48位进行异或运算</li>
+<li>通过8个S-盒将异或运算后获得的48位序列替代成一个32位的序列</li>
+<li>对32位序列进行P-盒置换变换得到函数f的32位输出序列</li>
+<li>将输入序列的左半部分与上一步的32位输出序列进行异或运算，得到新的右半部分输出序列</li>
+<li>将原来右半部分输入序列作为新一轮的左半部分输出序列</li>
+</ol>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><h4 id="初始置换"><a href="#初始置换" class="headerlink" title="初始置换"></a>初始置换</h4><p>简称IP置换，按照表格进行置换，（只有56个格子，每个字节第8位是校验位）</p>
+<h4 id="密钥置换"><a href="#密钥置换" class="headerlink" title="密钥置换"></a>密钥置换</h4><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926183917557.png" alt="image-20210926183917557"></p>
+<ol>
+<li>初始密钥长度56位</li>
+<li>先经过一轮密钥置换</li>
+<li>密钥一分为二，根据加密轮数，这两部分密钥循环左移一位或两位</li>
+<li>通过压缩置换（P-盒），从56位密钥中选出48位作为当前加密的轮密钥</li>
+</ol>
+<h4 id="扩展变换"><a href="#扩展变换" class="headerlink" title="扩展变换"></a>扩展变换</h4><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926184855256.png" alt="image-20210926184855256"></p>
+<h4 id="S-盒替换"><a href="#S-盒替换" class="headerlink" title="S-盒替换"></a>S-盒替换</h4><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926185140372.png" alt="image-20210926185140372"></p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210927023726201.png" alt="image-20210927023726201"></p>
+<p>S-盒是非线性的，所以比其他的操作都要安全</p>
+<h4 id="P-盒置换"><a href="#P-盒置换" class="headerlink" title="P-盒置换"></a>P-盒置换</h4><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210927024358872.png" alt="image-20210927024358872"></p>
+<h4 id="初始逆置换"><a href="#初始逆置换" class="headerlink" title="初始逆置换"></a>初始逆置换</h4><p>与初始置换相反，是初始置换的逆过程</p>
+<h1 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h1><p>Hash函数（散列函数）是一个将任意长度的消息序列映射为较短的、固定长度的一个值的函数。</p>
+<p>Hash函数值也叫消息摘要</p>
+<p>安全要求，如果一个Hash函数对这三个问题都是难解的，则认为该Hash函数是安全的：</p>
+<ol>
+<li>原像问题</li>
+<li>第二原像问题</li>
+<li>碰撞问题</li>
+</ol>
+<h1 id="公钥密码"><a href="#公钥密码" class="headerlink" title="公钥密码"></a>公钥密码</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>对称加密系统如DES的共享密钥保密和传输困难</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>密钥一分为二，公钥与私钥，分别用于加密与解密。公钥开放，私钥自己保管</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210922193513855.png" alt="image-20210922193513855"></p>
+<h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><p>公钥密码体制(M,C,K,E,D)（明文，密文，公密钥，加密，解密）</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210922193947501.png" alt="image-20210922193947501"></p>
+<h2 id="RSA算法"><a href="#RSA算法" class="headerlink" title="RSA算法"></a>RSA算法</h2><h3 id="大数分解问题"><a href="#大数分解问题" class="headerlink" title="大数分解问题"></a>大数分解问题</h3><p>计算两个素数的乘积非常容易，但是分解乘积却异常困难，RSA算法就是基于大数分解问题</p>
+<h3 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h3><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210922223132702.png" alt="image-20210922223132702"></p>
+<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>RSA安全性完全依赖于对大数分解问题困难性的预测，但是如今计算机算力越来越强，512bit模数的RSA已经不安全了，但是一定时间内，1024~2048比特模数的RSA还是安全的。</p>
+<p>常见的对RSA密码协议的攻击方法</p>
+<ol>
+<li>共用模数攻击</li>
+<li>低加密指数攻击</li>
+<li>中间相遇攻击</li>
+</ol>
+<h3 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h3><h4 id="模数n"><a href="#模数n" class="headerlink" title="模数n"></a>模数n</h4><ol>
+<li>p和q要足够大</li>
+<li>p和q要为强素数</li>
+<li>p和q之间差要合适</li>
+<li>p-1和q-1的最大公因子要小</li>
+</ol>
+<h4 id="加密密钥e"><a href="#加密密钥e" class="headerlink" title="加密密钥e"></a>加密密钥e</h4><ol>
+<li>φ与n的欧拉函数值互素</li>
+<li>不能太小</li>
+<li>在模数φ(x)下的阶要足够大</li>
+</ol>
+<h4 id="解密密钥d"><a href="#解密密钥d" class="headerlink" title="解密密钥d"></a>解密密钥d</h4><ol>
+<li>d不能小于⁴√n</li>
+</ol>
+<h2 id="基于身份的公钥密码体制"><a href="#基于身份的公钥密码体制" class="headerlink" title="基于身份的公钥密码体制"></a>基于身份的公钥密码体制</h2><h3 id="两种公钥密码体制"><a href="#两种公钥密码体制" class="headerlink" title="两种公钥密码体制"></a>两种公钥密码体制</h3><ol>
+<li>传统的基于证书的密码系统</li>
+<li>基于身份的密码系统</li>
+</ol>
+<h3 id="算法构成"><a href="#算法构成" class="headerlink" title="算法构成"></a>算法构成</h3><ol>
+<li>系统建立</li>
+<li>私钥提取</li>
+<li>加密</li>
+<li>解密</li>
+</ol>
+<h2 id="公钥密码体制的应用"><a href="#公钥密码体制的应用" class="headerlink" title="公钥密码体制的应用"></a>公钥密码体制的应用</h2><ol>
+<li>解决密钥分发和管理问题</li>
+<li>实现数字签名机制</li>
+<li>加密短小消息</li>
+</ol>
+<h1 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h1><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>数字签名是对以数字形式存储的消息进行某种处理，产生一种类似于传统手书签名功效的信息处理过程</p>
+<h2 id="基本要求-1"><a href="#基本要求-1" class="headerlink" title="基本要求"></a>基本要求</h2><ol>
+<li>签名者无法否认</li>
+<li>接收方可以验证，无法伪造</li>
+<li>产生争议时，可以由第三方仲裁机构裁决</li>
+</ol>
+<h2 id="数字签名体制"><a href="#数字签名体制" class="headerlink" title="数字签名体制"></a>数字签名体制</h2><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210923235957391.png" alt="image-20210923235957391"></p>
+<h2 id="数字签名特性"><a href="#数字签名特性" class="headerlink" title="数字签名特性"></a>数字签名特性</h2><h3 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h3><ol>
+<li>依赖性，</li>
+<li>独特性，包含签名者独特信息，保证不可伪造</li>
+<li>可验证性，必须有验证算法可以验证数字签名真伪</li>
+<li>不可伪造性，伪造在计算上、重用或拼接等方法都不可行</li>
+<li>可用性，生成验证识别的处理过程必须简单，可以存储和备份</li>
+</ol>
+<h3 id="安全特性"><a href="#安全特性" class="headerlink" title="安全特性"></a>安全特性</h3><ol>
+<li>单向性</li>
+<li>无碰撞性</li>
+<li>无关性</li>
+</ol>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>利用公钥密码算法实现，用私钥加密消息，接收方用公钥解密，由于私钥只有自己知道，也只能由对应的公钥解开，因此实现了数字签名和消息认证的效果</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210924001708791.png" alt="image-20210924001708791"></p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210924001905796.png" alt="image-20210924001905796"></p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210924001952015.png" alt="image-20210924001952015"></p>
+<p>注意：这里一定只能先用发送方的私钥加密，然后用接收方的公钥加密才行，不然会有安全隐患，别人可以伪装成发送方。</p>
+<p>实际应用中，签名算法之前，都会先让原始消息经过一层Hash函数处理（因为公钥加密算法太慢了）</p>
+<h2 id="两大类"><a href="#两大类" class="headerlink" title="两大类"></a>两大类</h2><h3 id="直接数字签名体制"><a href="#直接数字签名体制" class="headerlink" title="直接数字签名体制"></a>直接数字签名体制</h3><p>同上</p>
+<h3 id="可仲裁的数字签名体制"><a href="#可仲裁的数字签名体制" class="headerlink" title="可仲裁的数字签名体制"></a>可仲裁的数字签名体制</h3><p>通过引入一个可信的第三方作为数字签名系统的仲裁者，发送方对消息做完签名后，发给仲裁者，仲裁者判断是否是真实的，并且给出一个真实性证据，然后连同消息、发送者的数字签名、仲裁者的真实性证据一同发送给接收</p>
+<h1 id="考题"><a href="#考题" class="headerlink" title="考题"></a>考题</h1><p><img src="C:/Users/lxl/AppData/Roaming/Typora/typora-user-images/image-20210927031035472.png" alt="image-20210927031035472"></p>
+<p><img src="C:/Users/lxl/AppData/Roaming/Typora/typora-user-images/image-20210927031100132.png" alt="image-20210927031100132"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">密码编程</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">加密算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/27/%E7%94%B5%E5%AD%90%E5%95%86%E5%8A%A1%E5%AE%89%E5%85%A8%E4%B8%8E%E5%8A%A0%E5%AF%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+    
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-松耦合的任务调度模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1098,155 +1373,6 @@
 
 
   
-    <article id="post-投递" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/31/%E6%8A%95%E9%80%92/">投递</a>
-    </h1>
-  
-
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
-      </span>
-    </span>
-</div>
-
-        
-        
-        <a href="/2021/08/31/%E6%8A%95%E9%80%92/" class="archive-article-date">
-  	<time datetime="2021-08-31T05:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <span id="more"></span>
-
-<h2 id="锐捷网络-Java开发工程师"><a href="#锐捷网络-Java开发工程师" class="headerlink" title="锐捷网络-Java开发工程师"></a><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/ruijie/26519#/candidateHome/applications">锐捷网络-Java开发工程师</a></h2><h2 id="海量数据研发中心-前端开发工程师"><a href="#海量数据研发中心-前端开发工程师" class="headerlink" title="海量数据研发中心-前端开发工程师"></a><a target="_blank" rel="noopener" href="https://vastdata.zhiye.com/Portal/Apply/Index">海量数据研发中心-前端开发工程师</a></h2><h2 id="CVTE视源股份-前端"><a href="#CVTE视源股份-前端" class="headerlink" title="CVTE视源股份-前端"></a><a target="_blank" rel="noopener" href="https://careers.cvte.com/zone/resume/applications">CVTE视源股份-前端</a></h2><h2 id="bilibili-软件开发"><a href="#bilibili-软件开发" class="headerlink" title="bilibili-软件开发"></a><a target="_blank" rel="noopener" href="https://jobs.bilibili.com/campus/records">bilibili-软件开发</a></h2><h2 id="北京微步-前端开发"><a href="#北京微步-前端开发" class="headerlink" title="北京微步-前端开发"></a><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/threatbook/27230?recommendCode=VdCSUs#/candidateHome/applications">北京微步-前端开发</a></h2><h2 id="字节跳动-前端开发武汉"><a href="#字节跳动-前端开发武汉" class="headerlink" title="字节跳动-前端开发武汉"></a><a target="_blank" rel="noopener" href="https://jobs.bytedance.com/campus/position/application">字节跳动-前端开发武汉</a></h2><h2 id="4399-前端开发"><a href="#4399-前端开发" class="headerlink" title="4399-前端开发"></a><a target="_blank" rel="noopener" href="https://hr.4399om.com/main/?r=userCenter/index">4399-前端开发</a></h2><h2 id="华为-测试开发"><a href="#华为-测试开发" class="headerlink" title="华为-测试开发"></a><del><a target="_blank" rel="noopener" href="https://career.huawei.com/reccampportal/portal5/appjob-campus.html">华为-测试开发</a></del></h2><!-- more -->
-
-<h3 id="一面-通过"><a href="#一面-通过" class="headerlink" title="一面 - 通过"></a>一面 - 通过</h3><p>时间：2021年9月6日15点00分 - 16点15分</p>
-<p>自我介绍，推销了一下个人博客</p>
-<p>手撕算法，简单题，求最小重复子数组长度，两分钟搞定</p>
-<p>开始问项目，先问的是去年的实习经历，简单介绍了一下工作内容，因为太久远所以我没多说</p>
-<p>然后问的是在腾讯实习参与的项目，介绍了三个，面试官接着问域名解析的那个，简单介绍了一下业务背景和基础架构（我没有讲具体业务相关的东西，信息安全，务必注意！）开始回答面试官问题</p>
-<ol>
-<li>有其他的请求如何处理？另外有一个服务器做了专门的接口</li>
-<li>项目的具体意义在哪里？意义很大，基础数据建设</li>
-<li>项目提升了多少效率？200核1小时解析一亿九千万次</li>
-</ol>
-<p>开始闲聊，陆续问了一些问题</p>
-<p>然后就是问我上级考试时做的前两道题的思路，因为是半年前做的，我有点忘记了，看了下题目和代码简单回忆了一下</p>
-<ol>
-<li>简单题足球计分。简单的暴力破解，算法复杂度o(n)</li>
-<li>帽子问题。这道题其实想明白了很简单，每个人都能看到其他人的帽子数量，求<strong>最少</strong>的帽子数量，那么必须假定尽可能有多的重复的数字的帽子颜色是一样的，也就是说[1,1,2]中的“1”和“1”应该当作相同的，但是这里有一个坑，当重复数字n数量大于n+1后，就一定不止一种颜色了，所以要做一个判断。</li>
-</ol>
-<p>面试结束，反问环节</p>
-<ol>
-<li>部门业务相关：测试工具开发、自动化测试、网络安全测试等</li>
-<li>技术栈：python&gt;java&gt;go</li>
-</ol>
-<h3 id="二面-通过"><a href="#二面-通过" class="headerlink" title="二面 - 通过"></a>二面 - 通过</h3><p>时间：2021年9月15日10点~11点</p>
-<p>一开始我这边麦有很大噪音，特别尴尬，面试官全程忍着噪音跟我面试的，唉，不知道怎么回事。</p>
-<p>自我介绍，推销个人博客，不过这次面试官没有看直接叫我投屏。</p>
-<p>也是直接问腾讯实习的项目，先问了一个iGet拨测项目，简单介绍了一下背景和系统架构，也是陆续问了一些问题，包括：</p>
-<ul>
-<li>题库如何判断答案是否正确？有对应的唯一token，拨测后会根据token给到唯一答案。</li>
-<li>如何分配调度任务？如何做负载均衡？按任务量分批次发送，nginx轮询策略。</li>
-<li>项目难点？极高的负载量，1500万负载量，直接冲崩了服务器，破纪录了。</li>
-<li>为什么要用这个架构？（这和他们那边有一个压测的架构很像）项目要求需要用trpc，所以只能这么设计，我也不想（太傻逼了）</li>
-<li>为什么数据不用数据库存储？数据都是即用即删的，时效性很低，数据库效率低，我直接用gzip+字节流写入文件，发送完后删掉文件</li>
-<li>等等</li>
-</ul>
-<p>后来又接着问了域名解析的那个项目，介绍了一下背景和架构，然后他开始问问题：</p>
-<ul>
-<li>这个过程中kafka的作用是啥？任务调度、负载均衡、自动管理节点状态</li>
-<li>分布式架构有什么好处？可以调节工作机数量，节省成本</li>
-<li>等等</li>
-</ul>
-<p>然后他给了我一道算法题：</p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/images3c3069b75bda8c60b7c082e64b26f7a.png" alt="算法题"></p>
-<p>我感觉题意有点模糊，对于相似的定义，没有解释清楚，询问了一下后有了第一个思路：</p>
-<p>从头往后遍历，如果发现两个字符串对应位置的字符不一样，就做一次全局替换，把str1对应的字符全部替换成str2的字符，比如说把a换成x，每次遍历做一次判断，发现两个字符完全相等时，结束遍历，返回True，最后写完了，都正确，我指出时间复杂度是O(n)，但是这种方法有弊端，就是它是发现正确才返回结果，当遇到一个极长的错误答案时，会一直匹配到结束，也就是说，这个算法没有办法在遍历中意识到答案错误，我开始寻找其他思路</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">match1</span>(<span class="params">str1, str2</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(str1) != <span class="built_in">len</span>(str2):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(str1)):</span><br><span class="line">        <span class="keyword">if</span> str1 == str2:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> str1[i] != str2[i]:</span><br><span class="line">            str1 = str1.replace(str1[i], str2[i])</span><br><span class="line">    <span class="keyword">if</span> str1 == str2:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-
-<p>然后面试官提醒我可以把字符替换成对应的出现的第一个字符的位置的下标，我立马想到用字典去存储曾经出现的值，写出来了第二钟解法，这种解法时间复杂度也是O(n)，空间复杂度略大一点（额外字典），但是它可以识别到遍历过程中的错误解，所以在遇到一些极端错误值时，快速返回结果，而不是要等到遍历结束。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">match2</span>(<span class="params">str1, str2</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(str1) != <span class="built_in">len</span>(str2):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    dic1, dic2 = &#123;&#125;, &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(str1)):</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">        <span class="keyword">if</span> str1[i] <span class="keyword">not</span> <span class="keyword">in</span> dic1.keys():</span><br><span class="line">            dic1[str1[i]] = i</span><br><span class="line">        <span class="keyword">if</span> str2[i] <span class="keyword">not</span> <span class="keyword">in</span> dic2.keys():</span><br><span class="line">            dic2[str2[i]] = i</span><br><span class="line">        <span class="keyword">if</span> dic1[str1[i]] != dic2[str2[i]]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
-<p>后面是反问环节，本来有一些问题想问，比如说前面的那个压测的他们做的架构是怎么样的，但是我这边噪音太大了，然后面试官把我静音了:cry:，我就直接结束了，唉</p>
-<p>我感觉这次面试，我状态不是很好，可能是因为麦有噪音，有点紧张，不过面试完马上就收到了通过短信，还是很感谢面试官和HR手下留情，下次一定把麦调整好。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/31/%E6%8A%95%E9%80%92/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-    
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1358,18 +1484,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">分布式架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">高并发高负载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -1382,11 +1496,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pipenv</a>
+                <a href="javascript:void(0)" class="js-tag color4">rpc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">分布式架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">高并发高负载</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">切片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pipenv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1399,6 +1525,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">flask-apschduler</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">密码编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">加密算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1571,5 +1705,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"left","width":150,"height":300,"mobile":{"show":false}},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":30,"vOffset":40},"mobile":{"show":false},"log":false});</script></body>
 </html>
