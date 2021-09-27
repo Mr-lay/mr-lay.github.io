@@ -206,183 +206,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <span id="more"></span>
-
-<h1 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h1><p>通常，古典密码都是以单个字母为作用对象的加密算法</p>
-<h2 id="简单古典密码"><a href="#简单古典密码" class="headerlink" title="简单古典密码"></a>简单古典密码</h2><h3 id="棋盘密码"><a href="#棋盘密码" class="headerlink" title="棋盘密码"></a>棋盘密码</h3><p>将26个字母对应成棋盘上的横纵坐标，密钥空间大小25！</p>
-<h3 id="移位密码"><a href="#移位密码" class="headerlink" title="移位密码"></a>移位密码</h3><p>把对应的英文字母向前或者向后移动固定位数，密钥空间大小26，若密钥key=0</p>
-<h3 id="仿射密码"><a href="#仿射密码" class="headerlink" title="仿射密码"></a>仿射密码</h3><p>移位密码的推广，移位的同时加上一个乘法，密钥空间大小12*26=312</p>
-<h3 id="代换密码"><a href="#代换密码" class="headerlink" title="代换密码"></a>代换密码</h3><p>26个英文字母的简单置换，密钥空间大小26！</p>
-<h3 id="维吉尼亚密码"><a href="#维吉尼亚密码" class="headerlink" title="维吉尼亚密码"></a>维吉尼亚密码</h3><p><strong>多表代换密码</strong>，通过使用多个密文字母替换同一个明文字母的方式消除字符的特性</p>
-<p>其实就是移位密码的高级版，把一个密钥换成了一个密钥组，密钥空间大小为26^m</p>
-<h3 id="置换密码"><a href="#置换密码" class="headerlink" title="置换密码"></a>置换密码</h3><p>分组消息，然后重新排列消息中元素的位置，不改变元素本身</p>
-<h3 id="Hill密码"><a href="#Hill密码" class="headerlink" title="Hill密码"></a>Hill密码</h3><h2 id="加密算法的评估"><a href="#加密算法的评估" class="headerlink" title="加密算法的评估"></a>加密算法的评估</h2><p>好的加密算法应该具有<strong>混淆性</strong>和<strong>扩散性</strong></p>
-<h3 id="混淆性"><a href="#混淆性" class="headerlink" title="混淆性"></a>混淆性</h3><p>加密法应隐藏所有的局部模式，将可能导致破解密钥的提示性信息特征进行隐藏</p>
-<h3 id="扩散性"><a href="#扩散性" class="headerlink" title="扩散性"></a>扩散性</h3><p>加密法应将密文的不同部分进行混合，使任何字符都不在原来的位置</p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/images20210926160603.png" alt="image-20210926160538951"></p>
-<h1 id="分组密码"><a href="#分组密码" class="headerlink" title="分组密码"></a>分组密码</h1><h2 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h2><ol>
-<li>Zero填充算法，不足全部补0</li>
-<li>X923填充算法，前6个补0，末尾记录总字节数</li>
-<li>PKCS7，全部补总字节数</li>
-<li>ISO10126，前6个随机，末尾记录总字节数</li>
-</ol>
-<h2 id="Feistel分组密码"><a href="#Feistel分组密码" class="headerlink" title="Feistel分组密码"></a>Feistel分组密码</h2><h3 id="两个基本操作"><a href="#两个基本操作" class="headerlink" title="两个基本操作"></a>两个基本操作</h3><ul>
-<li><strong>扩散</strong>，使<strong>明文和密文</strong>之间的统计关系尽可能变得复杂</li>
-<li><strong>混淆</strong>，使<strong>密文和密钥</strong>之间的统计关系变得尽可能复杂</li>
-</ul>
-<h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926163033053.png" alt="image-20210926163033053" style="zoom:150%;" />
-
-<p>初始输入：长度2L的明文分组序列，初始密钥K</p>
-<ol>
-<li>明文序列一分为二，L<sub>0</sub>和R<sub>0</sub></li>
-<li>加密n轮，第i轮以第i-1轮的输出作为输入，同时还有初始密钥产生的子密钥K<sub>i</sub></li>
-<li>每轮加密操作如下<ul>
-<li>对R<sub>i-1</sub>使用轮函数F和子密钥K<sub>i</sub>进行变换</li>
-<li>将变换结果与L<sub>i-1</sub>进行异或运算，运算结果为R<sub>i</sub>输出</li>
-<li>直接将R<sub>i-1</sub>作为L<sub>i</sub>输出</li>
-</ul>
-</li>
-<li>最终组合L<sub>n</sub>和R<sub>n</sub>作为2L长度的密文</li>
-</ol>
-<img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926164130792.png" alt="image-20210926164130792" style="zoom:150%;" />
-
-<p>S操作：为每一个阶段产生一个子密钥</p>
-<p>T操作：核心操作，非线性运算，保证加密算法的安全性</p>
-<h3 id="Feistel分组密码的安全性"><a href="#Feistel分组密码的安全性" class="headerlink" title="Feistel分组密码的安全性"></a>Feistel分组密码的安全性</h3><ol>
-<li>分组大小，越大越高，常用64位</li>
-<li>子密钥大小，至少大于128位</li>
-<li>循环次数</li>
-<li>子密钥产生算法</li>
-<li>轮函数F</li>
-</ol>
-<p>安全性通常与加密效率成反比，所以在选择大小与复杂度时，需要权衡利弊</p>
-<h3 id="轮函数F"><a href="#轮函数F" class="headerlink" title="轮函数F"></a>轮函数F</h3><p>作用：对消息序列进行混淆操作</p>
-<p>基本准则：非线性，非线性程度越强，安全性能越高，攻击难度越大</p>
-<p>S-盒（替换盒）：输入序列的任何变动都是的输出序列产生看似随机的变动，并且是非线性的</p>
-<p>雪崩效应：任何输入位或密钥位与输出位之间不应该有任何联系</p>
-<p>严格的雪崩准则（SAC）：对于任何的i、j，当任何一个输入位i发生改变时，S-盒的任何输出位j的值发生改变的概率都为1/2</p>
-<p>位独立准则（BIC）：对任意的i、j、k，当任何一个输入位i发生改变时，输出位j和k的值应该独立的发生改变</p>
-<h2 id="数据加密标准——DES"><a href="#数据加密标准——DES" class="headerlink" title="数据加密标准——DES"></a>数据加密标准——DES</h2><p>DES是最广泛使用的一种分组密码算法</p>
-<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926165422220.png" alt="image-20210926165422220"></p>
-<h3 id="加密流程"><a href="#加密流程" class="headerlink" title="加密流程"></a>加密流程</h3><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926165658141.png" alt="image-20210926165658141" style="zoom:150%;" />
-
-<ol>
-<li>初始置换IP，将64位明文一分为二</li>
-<li>16轮加密运算，函数f</li>
-<li>末尾置换IP<sup>-1</sup>得到最终密文</li>
-</ol>
-<h3 id="每轮加密操作"><a href="#每轮加密操作" class="headerlink" title="每轮加密操作"></a>每轮加密操作</h3><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926182148224.png" alt="image-20210926182148224"></p>
-<h4 id="三种盒"><a href="#三种盒" class="headerlink" title="三种盒"></a>三种盒</h4><ul>
-<li>扩充盒E-盒</li>
-<li>替换盒S-盒</li>
-<li>置换盒P-盒</li>
-</ul>
-<h4 id="具体加密操作"><a href="#具体加密操作" class="headerlink" title="具体加密操作"></a>具体加密操作</h4><ol>
-<li>把56位密钥等分成28位的两部分</li>
-<li>根据加密轮数，密钥循环左移一位或两位后合并</li>
-<li>从合并后的56位密钥中选出48位（压缩置换）</li>
-<li>将输入序列32位右半部分扩展成48位（扩展置换）</li>
-<li>两个48位进行异或运算</li>
-<li>通过8个S-盒将异或运算后获得的48位序列替代成一个32位的序列</li>
-<li>对32位序列进行P-盒置换变换得到函数f的32位输出序列</li>
-<li>将输入序列的左半部分与上一步的32位输出序列进行异或运算，得到新的右半部分输出序列</li>
-<li>将原来右半部分输入序列作为新一轮的左半部分输出序列</li>
-</ol>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><h4 id="初始置换"><a href="#初始置换" class="headerlink" title="初始置换"></a>初始置换</h4><p>简称IP置换，按照表格进行置换，（只有56个格子，每个字节第8位是校验位）</p>
-<h4 id="密钥置换"><a href="#密钥置换" class="headerlink" title="密钥置换"></a>密钥置换</h4><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926183917557.png" alt="image-20210926183917557"></p>
-<ol>
-<li>初始密钥长度56位</li>
-<li>先经过一轮密钥置换</li>
-<li>密钥一分为二，根据加密轮数，这两部分密钥循环左移一位或两位</li>
-<li>通过压缩置换（P-盒），从56位密钥中选出48位作为当前加密的轮密钥</li>
-</ol>
-<h4 id="扩展变换"><a href="#扩展变换" class="headerlink" title="扩展变换"></a>扩展变换</h4><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926184855256.png" alt="image-20210926184855256"></p>
-<h4 id="S-盒替换"><a href="#S-盒替换" class="headerlink" title="S-盒替换"></a>S-盒替换</h4><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210926185140372.png" alt="image-20210926185140372"></p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210927023726201.png" alt="image-20210927023726201"></p>
-<p>S-盒是非线性的，所以比其他的操作都要安全</p>
-<h4 id="P-盒置换"><a href="#P-盒置换" class="headerlink" title="P-盒置换"></a>P-盒置换</h4><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210927024358872.png" alt="image-20210927024358872"></p>
-<h4 id="初始逆置换"><a href="#初始逆置换" class="headerlink" title="初始逆置换"></a>初始逆置换</h4><p>与初始置换相反，是初始置换的逆过程</p>
-<h1 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h1><p>Hash函数（散列函数）是一个将任意长度的消息序列映射为较短的、固定长度的一个值的函数。</p>
-<p>Hash函数值也叫消息摘要</p>
-<p>安全要求，如果一个Hash函数对这三个问题都是难解的，则认为该Hash函数是安全的：</p>
-<ol>
-<li>原像问题</li>
-<li>第二原像问题</li>
-<li>碰撞问题</li>
-</ol>
-<h1 id="公钥密码"><a href="#公钥密码" class="headerlink" title="公钥密码"></a>公钥密码</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>对称加密系统如DES的共享密钥保密和传输困难</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>密钥一分为二，公钥与私钥，分别用于加密与解密。公钥开放，私钥自己保管</p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210922193513855.png" alt="image-20210922193513855"></p>
-<h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><p>公钥密码体制(M,C,K,E,D)（明文，密文，公密钥，加密，解密）</p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210922193947501.png" alt="image-20210922193947501"></p>
-<h2 id="RSA算法"><a href="#RSA算法" class="headerlink" title="RSA算法"></a>RSA算法</h2><h3 id="大数分解问题"><a href="#大数分解问题" class="headerlink" title="大数分解问题"></a>大数分解问题</h3><p>计算两个素数的乘积非常容易，但是分解乘积却异常困难，RSA算法就是基于大数分解问题</p>
-<h3 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h3><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210922223132702.png" alt="image-20210922223132702"></p>
-<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>RSA安全性完全依赖于对大数分解问题困难性的预测，但是如今计算机算力越来越强，512bit模数的RSA已经不安全了，但是一定时间内，1024~2048比特模数的RSA还是安全的。</p>
-<p>常见的对RSA密码协议的攻击方法</p>
-<ol>
-<li>共用模数攻击</li>
-<li>低加密指数攻击</li>
-<li>中间相遇攻击</li>
-</ol>
-<h3 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h3><h4 id="模数n"><a href="#模数n" class="headerlink" title="模数n"></a>模数n</h4><ol>
-<li>p和q要足够大</li>
-<li>p和q要为强素数</li>
-<li>p和q之间差要合适</li>
-<li>p-1和q-1的最大公因子要小</li>
-</ol>
-<h4 id="加密密钥e"><a href="#加密密钥e" class="headerlink" title="加密密钥e"></a>加密密钥e</h4><ol>
-<li>φ与n的欧拉函数值互素</li>
-<li>不能太小</li>
-<li>在模数φ(x)下的阶要足够大</li>
-</ol>
-<h4 id="解密密钥d"><a href="#解密密钥d" class="headerlink" title="解密密钥d"></a>解密密钥d</h4><ol>
-<li>d不能小于⁴√n</li>
-</ol>
-<h2 id="基于身份的公钥密码体制"><a href="#基于身份的公钥密码体制" class="headerlink" title="基于身份的公钥密码体制"></a>基于身份的公钥密码体制</h2><h3 id="两种公钥密码体制"><a href="#两种公钥密码体制" class="headerlink" title="两种公钥密码体制"></a>两种公钥密码体制</h3><ol>
-<li>传统的基于证书的密码系统</li>
-<li>基于身份的密码系统</li>
-</ol>
-<h3 id="算法构成"><a href="#算法构成" class="headerlink" title="算法构成"></a>算法构成</h3><ol>
-<li>系统建立</li>
-<li>私钥提取</li>
-<li>加密</li>
-<li>解密</li>
-</ol>
-<h2 id="公钥密码体制的应用"><a href="#公钥密码体制的应用" class="headerlink" title="公钥密码体制的应用"></a>公钥密码体制的应用</h2><ol>
-<li>解决密钥分发和管理问题</li>
-<li>实现数字签名机制</li>
-<li>加密短小消息</li>
-</ol>
-<h1 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h1><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>数字签名是对以数字形式存储的消息进行某种处理，产生一种类似于传统手书签名功效的信息处理过程</p>
-<h2 id="基本要求-1"><a href="#基本要求-1" class="headerlink" title="基本要求"></a>基本要求</h2><ol>
-<li>签名者无法否认</li>
-<li>接收方可以验证，无法伪造</li>
-<li>产生争议时，可以由第三方仲裁机构裁决</li>
-</ol>
-<h2 id="数字签名体制"><a href="#数字签名体制" class="headerlink" title="数字签名体制"></a>数字签名体制</h2><p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210923235957391.png" alt="image-20210923235957391"></p>
-<h2 id="数字签名特性"><a href="#数字签名特性" class="headerlink" title="数字签名特性"></a>数字签名特性</h2><h3 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h3><ol>
-<li>依赖性，</li>
-<li>独特性，包含签名者独特信息，保证不可伪造</li>
-<li>可验证性，必须有验证算法可以验证数字签名真伪</li>
-<li>不可伪造性，伪造在计算上、重用或拼接等方法都不可行</li>
-<li>可用性，生成验证识别的处理过程必须简单，可以存储和备份</li>
-</ol>
-<h3 id="安全特性"><a href="#安全特性" class="headerlink" title="安全特性"></a>安全特性</h3><ol>
-<li>单向性</li>
-<li>无碰撞性</li>
-<li>无关性</li>
-</ol>
-<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>利用公钥密码算法实现，用私钥加密消息，接收方用公钥解密，由于私钥只有自己知道，也只能由对应的公钥解开，因此实现了数字签名和消息认证的效果</p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210924001708791.png" alt="image-20210924001708791"></p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210924001905796.png" alt="image-20210924001905796"></p>
-<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20210924001952015.png" alt="image-20210924001952015"></p>
-<p>注意：这里一定只能先用发送方的私钥加密，然后用接收方的公钥加密才行，不然会有安全隐患，别人可以伪装成发送方。</p>
-<p>实际应用中，签名算法之前，都会先让原始消息经过一层Hash函数处理（因为公钥加密算法太慢了）</p>
-<h2 id="两大类"><a href="#两大类" class="headerlink" title="两大类"></a>两大类</h2><h3 id="直接数字签名体制"><a href="#直接数字签名体制" class="headerlink" title="直接数字签名体制"></a>直接数字签名体制</h3><p>同上</p>
-<h3 id="可仲裁的数字签名体制"><a href="#可仲裁的数字签名体制" class="headerlink" title="可仲裁的数字签名体制"></a>可仲裁的数字签名体制</h3><p>通过引入一个可信的第三方作为数字签名系统的仲裁者，发送方对消息做完签名后，发给仲裁者，仲裁者判断是否是真实的，并且给出一个真实性证据，然后连同消息、发送者的数字签名、仲裁者的真实性证据一同发送给接收</p>
-<h1 id="考题"><a href="#考题" class="headerlink" title="考题"></a>考题</h1><p><img src="C:/Users/lxl/AppData/Roaming/Typora/typora-user-images/image-20210927031035472.png" alt="image-20210927031035472"></p>
-<p><img src="C:/Users/lxl/AppData/Roaming/Typora/typora-user-images/image-20210927031100132.png" alt="image-20210927031100132"></p>
-
+        <h1 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h1><p>通常，古典密码都是以单个字母为作用对象的加密算法</p>
+        
       
 
       
@@ -1508,11 +1333,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">切片</a>
+                <a href="javascript:void(0)" class="js-tag color2">pipenv</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pipenv</a>
+                <a href="javascript:void(0)" class="js-tag color3">切片</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1540,14 +1365,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高并发</a>
               </li>
              
@@ -1557,6 +1374,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">异步请求</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
