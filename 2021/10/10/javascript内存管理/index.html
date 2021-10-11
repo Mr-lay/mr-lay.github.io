@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://mr-lay.github.io">
   <title>JavaScript内存管理 | lay的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="内存管理JavaScript是在创建变量（对象，字符串等）时自动进行了分配内存，并且在不使用它们时“自动”释放。 释放的过程称为垃圾回收。 内存生命周期 分配你所需要的内存(初始化值、创建对象、new) 使用分配到的内存（读、写） 不需要时将其释放\归还(垃圾回收)  垃圾回收对象不需要被使用时就应该将其回收，节省内存。 垃圾回收器：嵌入在高级语言解释器中，主要工作是自动跟踪内存的分配和使用，当分">
+  <meta name="description" content="内存管理JavaScript是在创建变量（对象，字符串等）时自动进行了分配内存，并且在不使用它们时“自动”释放。 释放的过程称为垃圾回收。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript内存管理">
 <meta property="og:url" content="https://mr-lay.github.io/2021/10/10/javascript%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="lay的博客">
-<meta property="og:description" content="内存管理JavaScript是在创建变量（对象，字符串等）时自动进行了分配内存，并且在不使用它们时“自动”释放。 释放的过程称为垃圾回收。 内存生命周期 分配你所需要的内存(初始化值、创建对象、new) 使用分配到的内存（读、写） 不需要时将其释放\归还(垃圾回收)  垃圾回收对象不需要被使用时就应该将其回收，节省内存。 垃圾回收器：嵌入在高级语言解释器中，主要工作是自动跟踪内存的分配和使用，当分">
+<meta property="og:description" content="内存管理JavaScript是在创建变量（对象，字符串等）时自动进行了分配内存，并且在不使用它们时“自动”释放。 释放的过程称为垃圾回收。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-10T06:33:00.000Z">
-<meta property="article:modified_time" content="2021-10-10T07:59:29.294Z">
+<meta property="article:modified_time" content="2021-10-10T17:33:53.818Z">
 <meta property="article:author" content="lay">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="JavaScript">
@@ -82,7 +82,7 @@
 		</nav>
 		<nav>
 			<ul style="font-size:12px; font-style:oblique; font-weight:100">
-				总文章数：16
+				总文章数：17
 			</ul>
 		</nav>
 		<br/>
@@ -183,7 +183,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">792字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -192,7 +192,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -208,6 +208,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><p>JavaScript是在创建变量（对象，字符串等）时<strong>自动</strong>进行了分配内存，并且在不使用它们时“自动”释放。 释放的过程称为垃圾回收。</p>
+<span id="more"></span>
+
 <h2 id="内存生命周期"><a href="#内存生命周期" class="headerlink" title="内存生命周期"></a>内存生命周期</h2><ol>
 <li>分配你所需要的内存(初始化值、创建对象、new)</li>
 <li>使用分配到的内存（读、写）</li>
@@ -216,19 +218,32 @@
 <h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>对象不需要被使用时就应该将其回收，节省内存。</p>
 <p><strong>垃圾回收器</strong>：嵌入在高级语言解释器中，主要工作是自动跟踪内存的分配和使用，当分配的内存不在被使用时，自动释放它。</p>
 <p>垃圾回收算法是基于<strong>引用</strong>的概念，引用是指一个对象A是否能访问到另一个对象B，如果可以，称为A对B的引用</p>
-<h4 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h4><p>初级的垃圾回收算法，核心目标是判断“一个对象是否有被引用”。为每个对象的被引用次数计数，如果被引用次数为零，那么该对象就会被垃圾回收器回收。</p>
+<h3 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h3><p>初级的垃圾回收算法，核心目标是判断“一个对象是否有被引用”。为每个对象的被引用次数计数，如果被引用次数为零，那么该对象就会被垃圾回收器回收。</p>
 <h5 id="问题：循环引用"><a href="#问题：循环引用" class="headerlink" title="问题：循环引用"></a>问题：循环引用</h5><p>引用计数算法不能解决<strong>循环引用</strong>问题，如果有两个对象互相引用对方，那么即使这两个对象没有被使用，它们的引用计数依然不是0，所以永远也不会被回收</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> o2 = &#123;&#125;;</span><br><span class="line">  o.a = o2; <span class="comment">// o 引用 o2</span></span><br><span class="line">  o2.a = o; <span class="comment">// o2 引用 o</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;azerty&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
 
 <h5 id="导致后果：内存泄漏"><a href="#导致后果：内存泄漏" class="headerlink" title="导致后果：内存泄漏"></a>导致后果：内存泄漏</h5><p><strong>内存泄漏</strong>：由于某种原因导致程序不能释放某个已经不再使用的内存。内存泄漏并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，导致在释放该段内存之前就失去了对该段内存的控制，从而造成了内存的浪费。</p>
 <p>IE 6, 7 使用引用计数方式对 DOM 对象进行垃圾回收。该方式常常造成对象被循环引用时内存发生泄漏</p>
-<h4 id="标记清除算法"><a href="#标记清除算法" class="headerlink" title="标记清除算法"></a>标记清除算法</h4><p>核心机制是判断“对象是否可以被<strong>获得</strong>”</p>
+<h3 id="标记清除算法"><a href="#标记清除算法" class="headerlink" title="标记清除算法"></a>标记清除算法</h3><p>核心机制是判断“对象是否可以被<strong>获得</strong>”</p>
 <p>首先定义一个对象为根（root），在javascript中这个根是全局对象。垃圾回收器会<strong>定期</strong>从所有的根开始，找到所有的可以被引用的对象，剩下的没有被引用的对象，就是不可获得的对象，会被垃圾回收器回收。</p>
 <p>标记清除算法可以解决循环引用问题，因为两个对象循环引用的话，从全局对象是访问不到它们的（如o和o2），即使它们的引用数不是0</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>当对象不被使用需要被垃圾回收</p>
 <p>引用计数通过判断对象被引用数是否为0</p>
 <p>标记清除法通过判断对象是否可以被获得</p>
 <p>标记清除法更好，因为对象是否可以被获得比起对象引用数是否为0更<strong>贴切</strong>对象不需要被使用</p>
+<h3 id="减少垃圾回收"><a href="#减少垃圾回收" class="headerlink" title="减少垃圾回收"></a>减少垃圾回收</h3><ol>
+<li>优化数组，不用时赋值[]</li>
+<li>优化对象，不用时赋值null</li>
+<li>优化函数，在循环的函数表达式中，如果可以复用，尽可能放在外面</li>
+</ol>
+<h3 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h3><p><strong>内存泄漏</strong>：由于某种原因导致程序不能释放某个已经不再使用的内存。内存泄漏并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，导致在释放该段内存之前就失去了对该段内存的控制，从而造成了内存的浪费。</p>
+<p>导致内存泄漏的其他方式：</p>
+<ol>
+<li><strong>意外的全局变量：</strong> 由于使用未声明的变量，而意外的创建了一个全局变量，而使这个变量一直留在内存中无法被回收。</li>
+<li><strong>被遗忘的计时器或回调函数：</strong> 设置了 setInterval 定时器，而忘记取消它，如果循环函数有对外部变量的引用的话，那么这个变量会被一直留在内存中，而无法被回收。</li>
+<li><strong>脱离 DOM 的引用：</strong> 获取一个 DOM 元素的引用，而后面这个元素被删除，由于一直保留了对这个元素的引用，所以它也无法被回收。</li>
+<li><strong>闭包：</strong> 不合理的使用闭包，从而导致某些变量一直被留在内存当中。</li>
+</ol>
 <p>参考链接：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management">内存管理</a></p>
 
       
@@ -343,6 +358,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2021/10/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript基础
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/10/09/javascript%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">JavaScript严格模式</div>
@@ -372,7 +396,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.1.</span> <span class="toc-text">内存生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-number">1.2.</span> <span class="toc-text">垃圾回收</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">引用计数算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8"><span class="toc-number">1.2.0.1.1.</span> <span class="toc-text">问题：循环引用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BC%E8%87%B4%E5%90%8E%E6%9E%9C%EF%BC%9A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-number">1.2.0.1.2.</span> <span class="toc-text">导致后果：内存泄漏</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">标记清除算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.1.</span> <span class="toc-text">内存生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-number">1.2.</span> <span class="toc-text">垃圾回收</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">引用计数算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8"><span class="toc-number">1.2.1.0.1.</span> <span class="toc-text">问题：循环引用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BC%E8%87%B4%E5%90%8E%E6%9E%9C%EF%BC%9A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-number">1.2.1.0.2.</span> <span class="toc-text">导致后果：内存泄漏</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">标记清除算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%8F%E5%B0%91%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-number">1.2.3.</span> <span class="toc-text">减少垃圾回收</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-number">1.2.4.</span> <span class="toc-text">内存泄漏</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -500,6 +524,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -509,14 +541,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,15 +564,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pipenv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">切片</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">vue3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pipenv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,6 +596,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高并发</a>
               </li>
              
@@ -581,14 +613,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">异步请求</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
