@@ -15,12 +15,14 @@
 <meta property="og:site_name" content="lay的博客">
 <meta property="og:description" content="javascript中的原型约等于其他语言中的继承">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Mr-lay/image-repo/main/images1430985-b650bc438f236877.jpg">
 <meta property="article:published_time" content="2021-10-09T15:33:00.000Z">
-<meta property="article:modified_time" content="2021-10-10T10:22:02.751Z">
+<meta property="article:modified_time" content="2021-10-15T06:47:52.358Z">
 <meta property="article:author" content="lay">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Mr-lay/image-repo/main/images1430985-b650bc438f236877.jpg">
   
     <link rel="alternative" href="/atom.xml" title="lay的博客" type="application/atom+xml">
   
@@ -82,7 +84,7 @@
 		</nav>
 		<nav>
 			<ul style="font-size:12px; font-style:oblique; font-weight:100">
-				总文章数：17
+				总文章数：20
 			</ul>
 		</nav>
 		<br/>
@@ -183,7 +185,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">370字</span>
+        <span class="post-count">627字</span>
       </span>
     </span>
 
@@ -192,7 +194,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -225,7 +227,20 @@
 <li>object.create()</li>
 <li>class ES6</li>
 </ol>
+<h3 id="原型对象之间的关系"><a href="#原型对象之间的关系" class="headerlink" title="原型对象之间的关系"></a>原型对象之间的关系</h3><p>原型相关的属性有如下：</p>
+<ol>
+<li>prototype：所有<strong>函数对象</strong>都拥有，指向该函数对象的原型对象</li>
+<li><code>__proto__</code>: 所有对象都拥有指向该对象的构造函数的原型对象</li>
+<li>constructor：原型对象的一个属性，可以被实例继承，指向该对象的构造函数</li>
+</ol>
+<p>特殊规则：</p>
+<ol>
+<li>原型对象也是一个普通对象，它的构造函数是Object，所以<code>原型对象.__proto__</code>·指向<code>Object.prototype</code>，但是<code>Object.prototype[‘__proto__’]</code>指向的对象为null，因为已经到达原型链的顶端</li>
+<li>构造函数（如Person）是函数对象，函数对象的构造函数时Function，所以<code>Person.__proto__ == Function.prototype</code>，Function也是一种特殊的函数对象，所以<code>Function.__proto__ == Function.prototype</code>，唯一一个自己的proto等于自己的prototylr的对象了，也就是自己创建了自己（我生我自己？？？）</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/images1430985-b650bc438f236877.jpg" alt="img"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>js原型 == 继承</p>
+<p>原型链的形成依靠proto和prototype，存在于实例的proto与构造函数的原型对象prototype之间</p>
 
       
 
@@ -377,7 +392,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">创建对象的几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">原型对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-number">3.</span> <span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8E%9F%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">使用原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">创建对象的几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">原型对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-number">3.</span> <span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8E%9F%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">使用原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">5.</span> <span class="toc-text">原型对象之间的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -505,11 +520,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,6 +540,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
@@ -537,11 +564,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">切片</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">vue3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,11 +576,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">切片</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vue3</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,7 +588,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">

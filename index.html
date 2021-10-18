@@ -79,7 +79,7 @@
 		</nav>
 		<nav>
 			<ul style="font-size:12px; font-style:oblique; font-weight:100">
-				总文章数：17
+				总文章数：20
 			</ul>
 		</nav>
 		<br/>
@@ -165,14 +165,14 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-前端面试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-浏览器缓存原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/">JavaScript基础</a>
+      <a class="article-title" href="/2021/10/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E5%8E%9F%E7%90%86/">浏览器缓存原理</a>
     </h1>
   
 
@@ -182,7 +182,416 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5.3k字</span>
+        <span class="post-count">1.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+</div>
+
+        
+        
+        <a href="/2021/10/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2021-10-16T08:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h1><p>浏览器缓存：把自己请求过的Web资源存储起来，下次需要使用的时候，会根据缓存机制决定，是直接从缓存读取，还是重新向服务器请求资源。</p>
+<p>浏览器缓存作用:</p>
+<ol>
+<li>加快网页加载速度，优化网页浏览体验</li>
+<li>减少服务器带宽消耗，降低服务器压力</li>
+</ol>
+<h2 id="浏览器缓存位置"><a href="#浏览器缓存位置" class="headerlink" title="浏览器缓存位置"></a>浏览器缓存位置</h2><p>mermory cache：资源存储在内存中，窗口关闭资源释放</p>
+<p>disk cache：资源存储在磁盘中，浏览器关闭后资源仍然存在</p>
+<p>开发者工具里的network就可以看到资源来源</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20211016221157684.png" alt="image-20211016221157684"></p>
+<h2 id="缓存依据"><a href="#缓存依据" class="headerlink" title="缓存依据"></a>缓存依据</h2><p>浏览器决定资源是否缓存主要依据两个属性：<strong>新鲜度</strong>（过期机制）和<strong>校验值</strong>（验证机制）</p>
+<p>新鲜度：指资源从<strong>上一次</strong>加载到现在过去了多少时间，一般浏览器会使用新鲜程度在一定时间（max-age）的资源</p>
+<p>校验值：指资源的唯一标识，一般是一个hash值，一旦资源做过改动，资源的校验值就会更新，服务器会对比校验值是否一致来决定是否使用缓存</p>
+<h2 id="第一次加载资源"><a href="#第一次加载资源" class="headerlink" title="第一次加载资源"></a>第一次加载资源</h2><p>浏览器第一次加载资源后会存储资源以及服务器发过来的<strong>响应头</strong>（Expires、cache-control、Etags、Last-Modifined等），这些响应头决定了浏览器下次需要使用缓存时将要使用如何的缓存策略。</p>
+<h2 id="缓存相关响应头"><a href="#缓存相关响应头" class="headerlink" title="缓存相关响应头"></a>缓存相关响应头</h2><h3 id="Expries"><a href="#Expries" class="headerlink" title="Expries"></a>Expries</h3><p>表示着资源的过期时间，如<code> Mon, 15 Aug 2016 03:56:47 GMT</code>，没有超过该时间则仍然启用缓存</p>
+<p>Expires的时间是依靠系统时间，所以当系统时间不准或者被更改时，就会出现问题，所以在http1.1开始，就被弃用了</p>
+<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><p>Cache-Control可以说是最关键的响应头了，它决定了服务器将要以哪种策略使用缓存，它可以有如下值：</p>
+<p><strong>public</strong>：表示资源可以被客户端中间的<strong>代理服务器</strong>缓存（如CDN）</p>
+<p><strong>privite</strong>：默认值，表示仅能被客户端缓存</p>
+<p><strong>no-cache</strong>：不<strong>使用</strong>缓存，no-cache仅仅表示不直接使用缓存（禁用强缓存），而不是不存储缓存，指定no-cache后，浏览器会使用协商缓存，所以资源仍然会被缓存</p>
+<p><strong>no-store</strong>：不存储缓存，no-store表示不存储任何资源，每次需要资源都重新请求</p>
+<p><strong>max-age</strong>=num：最大缓存存在时间，如max-age=600，指定资源在收到之后600<strong>秒</strong>内都是可以使用的</p>
+<h3 id="Etag"><a href="#Etag" class="headerlink" title="Etag"></a>Etag</h3><p>表示资源的<strong>唯一标识</strong>，如<code>ETag: W/&quot;9e49e41090b113dd25870fa92d13f8a3&quot;</code>，一般是一个hash值，协商缓存中通过对比Etags值来判断资源是否有被修改</p>
+<h3 id="Last-Modifined"><a href="#Last-Modifined" class="headerlink" title="Last-Modifined"></a>Last-Modifined</h3><p>表示资源上次被修改的时间，如<code>Last-Modified: Mon, 23 Nov 2020 05:41:36 GMT</code>，Last-Modifined值仅仅只能记录到秒级别，假如一秒内发生了多次资源修改，则无法记录，因此有一定缺陷。</p>
+<h2 id="缓存策略"><a href="#缓存策略" class="headerlink" title="缓存策略"></a>缓存策略</h2><p>浏览器主要有两种缓存机制，<strong>强缓存</strong>和<strong>协商缓存</strong></p>
+<h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a><strong>强缓存</strong></h3><p>浏览器通过对比缓存资源时间是否过期来决定缓存是否可用，一般强缓存优先级较高，会先做判断，判断逻辑是<code>Last-Modifined + max-age &lt;= now time</code></p>
+<ul>
+<li>依靠Expires或Cache-Control才能实现</li>
+<li>Cache-Control级别需要有max-age才能生效</li>
+</ul>
+<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>当未命中强缓存时，协商缓存生效，浏览器通过向服务器发送带有if-Modifined-Since或if-None-Match的请求，服务器收到后，判断缓存是否还有效，如果有效，则返回304给浏览器，告诉浏览器啥也不用做，否则返回200和新的资源</p>
+<p><strong>if-None-Match</strong>：值等于上一次收到资源的Etag值，如果Etag值存在，携带if-None-Match，服务器收到后对比标识是否一致</p>
+<p><strong>if-Modifined-Since</strong>：等于Last-Modifined值，假如Etag值不存在且Last-Modifined值存在，携带if-Modifined-Since参数，服务器收到后对比资源修改时间是否一致</p>
+<p>贴一张详细的网图</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/images1028513-20170420165136790-834238622.png" alt="img"></p>
+<h3 id="关于Last-Modified与ETag"><a href="#关于Last-Modified与ETag" class="headerlink" title="关于Last-Modified与ETag"></a>关于Last-Modified与ETag</h3><p>Last-Modifined有如下几个缺陷</p>
+<ol>
+<li>Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的新鲜度</li>
+<li>如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存</li>
+<li>有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</li>
+</ol>
+<p>Etag是服务器自动生成或者由开发者生成的对应资源在服务器端的唯一标识符，能够更加准确的控制缓存。Last-Modified与ETag是可以一起使用的，<strong>服务器会优先验证ETag</strong>，一致的情况下，才会继续比对Last-Modified，最后才决定是否返回304。</p>
+<h3 id="用户行为的影响"><a href="#用户行为的影响" class="headerlink" title="用户行为的影响"></a>用户行为的影响</h3><table>
+<thead>
+<tr>
+<th align="center">用户操作</th>
+<th align="center">Expires/Cache-Control</th>
+<th align="center">Last-Modified/Etag</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">地址栏回车</td>
+<td align="center">有效</td>
+<td align="center">有效</td>
+</tr>
+<tr>
+<td align="center">页面链接跳转</td>
+<td align="center">有效</td>
+<td align="center">有效</td>
+</tr>
+<tr>
+<td align="center">新开窗口</td>
+<td align="center">有效</td>
+<td align="center">有效</td>
+</tr>
+<tr>
+<td align="center">前进、后退</td>
+<td align="center">有效</td>
+<td align="center">有效</td>
+</tr>
+<tr>
+<td align="center">F5刷新</td>
+<td align="center"><strong>无效(BR重置max-age=0)</strong></td>
+<td align="center">有效</td>
+</tr>
+<tr>
+<td align="center">Ctrl+F5刷新</td>
+<td align="center"><strong>无效（重置Cache-Control=no-cache）</strong></td>
+<td align="center"><strong>无效（请求头丢弃该选项）</strong></td>
+</tr>
+</tbody></table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">浏览器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E5%8E%9F%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+    
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CSS中行内元素和块状元素" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/15/CSS%E4%B8%AD%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E5%92%8C%E5%9D%97%E7%8A%B6%E5%85%83%E7%B4%A0/">CSS外边距重叠问题</a>
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">547字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+
+        
+        
+        <a href="/2021/10/15/CSS%E4%B8%AD%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E5%92%8C%E5%9D%97%E7%8A%B6%E5%85%83%E7%B4%A0/" class="archive-article-date">
+  	<time datetime="2021-10-14T16:02:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS行内元素和块状元素"><a href="#CSS行内元素和块状元素" class="headerlink" title="CSS行内元素和块状元素"></a>CSS行内元素和块状元素</h1><h2 id="行内元素与块状元素"><a href="#行内元素与块状元素" class="headerlink" title="行内元素与块状元素"></a>行内元素与块状元素</h2><p>CSS中把元素的表现类型分为两种，行内元素inline（a, img, span, input）与块状元素block（body, div, ul, li, h1, p)</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/15/CSS%E4%B8%AD%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E5%92%8C%E5%9D%97%E7%8A%B6%E5%85%83%E7%B4%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+    
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CSS外边距重叠问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/14/CSS%E5%A4%96%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/">CSS外边距重叠问题</a>
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">884字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+
+        
+        
+        <a href="/2021/10/14/CSS%E5%A4%96%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-10-14T13:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS外边距重叠"><a href="#CSS外边距重叠" class="headerlink" title="CSS外边距重叠"></a>CSS外边距重叠</h1><h2 id="重叠现象"><a href="#重叠现象" class="headerlink" title="重叠现象"></a>重叠现象</h2><p>CSS中的块的margin有时会发生重叠现象</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">background</span>: red;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.inner</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;inner&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码的显示结果是这样</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20211014215332470.png" alt="image-20211014215332470"></p>
+<p>子元素把父元素撑高了20px，导致父元素距离上边界还有一段20px的空白距离</p>
+<p>形成的原因就是外边距重叠问题。</p>
+<p>&lt;!– more –&gt;</p>
+<h2 id="外边距重叠"><a href="#外边距重叠" class="headerlink" title="外边距重叠"></a>外边距重叠</h2><p>块的**上外边距(margin-top)<strong>和</strong>下外边距(margin-bottom)**有时合并(折叠)为单个边距，其大小为单个边距的最大值(或如果它们相等，则仅为其中一个)，这种行为称为边距折叠。</p>
+<p>有三种外边距重叠的情况</p>
+<h3 id="相邻元素之间"><a href="#相邻元素之间" class="headerlink" title="相邻元素之间"></a>相邻元素之间</h3><p>相邻元素的外边距会保留外边距最大的那个，比如13px和87px，合并后的结果不是100px而是87px</p>
+<h3 id="父元素和后代元素之间"><a href="#父元素和后代元素之间" class="headerlink" title="父元素和后代元素之间"></a>父元素和后代元素之间</h3><p>如果父元素和后代元素之间没有东西去分开的话，比如padding、border等的值都是0，子元素的margin会溢出容器，就像上面的问题那样（我的理解是父元素的外边距和子元素的外边距也发生了重叠，由于父元素外边距小于子元素，所以看起来就只有子元素的外边距了）。</p>
+<p>特殊的一点是，即使子元素加了相对定位偏移，它的边框和内容是偏移的，但是它的margin还是停留在原地</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20211014221655266.png" alt="image-20211014221655266"></p>
+<h3 id="空元素"><a href="#空元素" class="headerlink" title="空元素"></a>空元素</h3><p>假如有一个内容边框和padding都是0的空元素，也就是说它的上下外边距接触到了，也会发生外边距重叠的现象。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li>即使外边距为0，规则仍然适用</li>
+<li>如果参与折叠的外边距有负值，负值也会参与计算，情况很特殊，它会计算最大的正边距与最小的负边距（也就是绝对值最大的负边距）的和，比如说-13px、-8px、100px累计结果就是（100px-13px = 87px）</li>
+<li>如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。这一规则适用于相邻元素和嵌套元素。</li>
+</ol>
+<h3 id="负边距的问题"><a href="#负边距的问题" class="headerlink" title="负边距的问题"></a>负边距的问题</h3><p>关于第二点负边距的问题：</p>
+<p>假如没有负值，是这样的</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20211014222624160.png" alt="image-20211014222624160"><br><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20211014222657508.png" alt="image-20211014222657508"><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20211014222712360.png" alt="image-20211014222712360"></p>
+<p>可以看到这个负值影响到了父元素和兄弟元素的显示，最终结果就是重叠后边距等于<strong>最大的正边距加上最小的负边距</strong>，在这里也就是100px+(-13px) = 87px。</p>
+<p>同理，第三点中如果全都是负边距，也会保留最小的负边距，显示效果就是两个方块会重叠在一起</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">	<span class="selector-class">.box2</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">500px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: yellow;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin-top</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.inner1</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin</span>: -<span class="number">50px</span> <span class="number">0</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: green;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.inner2</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin</span>: -<span class="number">20px</span> <span class="number">0</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;inner1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;inner2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如上，-50px和-20px重叠结果就是-50px，也就是inner2元素向上贴50px，重叠在一起</p>
+<p><img src="https://raw.githubusercontent.com/Mr-lay/image-repo/main/imagesimage-20211014224038709.png" alt="image-20211014224038709"></p>
+<h2 id="外边距重叠的限制"><a href="#外边距重叠的限制" class="headerlink" title="外边距重叠的限制"></a>外边距重叠的限制</h2><p>首先外边距重叠只发生在块级元素，设定浮动和绝对定位的元素不会发生重叠现象（因为已经脱离文档流了），而且只影响上下外边距。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/14/CSS%E5%A4%96%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+    
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前端面试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/">前端面试题</a>
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5.4k字</span>
       </span>
     </span>
 
@@ -479,7 +888,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">370字</span>
+        <span class="post-count">627字</span>
       </span>
     </span>
 
@@ -488,7 +897,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -864,316 +1273,6 @@
 
 
   
-    <article id="post-kafka" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/04/kafka/">kafka</a>
-    </h1>
-  
-
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4.8k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">18分</span>
-      </span>
-    </span>
-</div>
-
-        
-        
-        <a href="/2021/09/04/kafka/" class="archive-article-date">
-  	<time datetime="2021-09-04T12:32:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="卡夫卡（kafka"><a href="#卡夫卡（kafka" class="headerlink" title="卡夫卡（kafka)"></a>卡夫卡（kafka)</h1><h2 id="kafka基础"><a href="#kafka基础" class="headerlink" title="kafka基础"></a>kafka基础</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>Kafka 是一个分布式的基于发布/订阅模式的消息队列（Message Queue），主要应用于 大数据实时处理领域。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">kafka-python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/04/kafka/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-    
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-高并发域名扫描" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/04/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9F%9F%E5%90%8D%E6%89%AB%E6%8F%8F/">高并发域名扫描</a>
-    </h1>
-  
-
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">475字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-
-        
-        
-        <a href="/2021/09/04/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9F%9F%E5%90%8D%E6%89%AB%E6%8F%8F/" class="archive-article-date">
-  	<time datetime="2021-09-04T12:27:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="域名扫描"><a href="#域名扫描" class="headerlink" title="域名扫描"></a>域名扫描</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>现有66万个dns域名，需要以不同运营商的不同地区的IP去依次做EDNS解析，然后统计结果，并且整理后存入数据库中</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>读取数据，用pandas的read_sql_table从指定表里读数据并且返回一个生成器，然后遍历生成器，把数据分批次发送到kafka中，指定topic为scan_host_list</li>
-<li>解析数据，这一步可以给多个CVM执行，每个CVM建一个kafka消费者consumer，指定相同groupID，然后使用多进程+多线程，调用封装好的批量解析的方法对每个域名进行解析，得到解析结果后，再将数据发送到kafka中，指定topic为domain_resolved</li>
-<li>解析域名，这一步使用了异步的多协程方式，由于DNS查询中会使用到scoket，而scoket会默认的开一个阻塞线程，从而导致无法做到并发处理，幸好dnspython提供了一个asyncquery库，可以用来处理异步请求，配合异步trio库，可以做到数百个请求同时完成，所以到这里解析一个域名仅仅只需要花一秒钟不到。</li>
-<li>数据存取，从kafka批次读数据，然后存入数据库</li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">高并发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">EDNS解析</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">异步请求</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/04/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9F%9F%E5%90%8D%E6%89%AB%E6%8F%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-    
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pipenv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/04/pipenv/">pipenv</a>
-    </h1>
-  
-
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">559字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
-      </span>
-    </span>
-</div>
-
-        
-        
-        <a href="/2021/09/04/pipenv/" class="archive-article-date">
-  	<time datetime="2021-09-04T12:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Pipenv是官方推荐的的python包管理工具，可以实现项目之间依赖的隔离。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pipenv</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/04/pipenv/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-    
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1277,11 +1376,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1297,6 +1396,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DNS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
@@ -1309,11 +1420,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">切片</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">vue3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1321,11 +1432,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">切片</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vue3</a>
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1337,7 +1444,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
