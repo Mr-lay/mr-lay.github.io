@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="https://mr-lay.github.io">
   <title>CSS的filter属性应用 | lay的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CSS中的filterfilter CSS属性将模糊或颜色偏移等图形效果应用于元素。滤镜通常用于调整图像，背景和边框的渲染。 filter是一个功能极其强大的属性，其实本质上是svg中的filter，但是CSS对其进行了一些简单函数的封装，不仅可以用于普通dom元素，还可以应用于svg元素。 参考链接：MDN filter属性 12345678910111213141516171819202122">
+  <meta name="description" content="CSS中的filterfilter CSS属性将模糊或颜色偏移等图形效果应用于元素。滤镜通常用于调整图像，背景和边框的渲染。 filter是一个功能极其强大的属性，其实本质上是svg中的filter，但是CSS对其进行了一些简单函数的封装，不仅可以用于普通dom元素，还可以应用于svg元素。 参考链接：MDN filter属性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS的filter属性应用">
 <meta property="og:url" content="https://mr-lay.github.io/2021/11/24/css%E7%9A%84filter%E5%B1%9E%E6%80%A7%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="lay的博客">
-<meta property="og:description" content="CSS中的filterfilter CSS属性将模糊或颜色偏移等图形效果应用于元素。滤镜通常用于调整图像，背景和边框的渲染。 filter是一个功能极其强大的属性，其实本质上是svg中的filter，但是CSS对其进行了一些简单函数的封装，不仅可以用于普通dom元素，还可以应用于svg元素。 参考链接：MDN filter属性 12345678910111213141516171819202122">
+<meta property="og:description" content="CSS中的filterfilter CSS属性将模糊或颜色偏移等图形效果应用于元素。滤镜通常用于调整图像，背景和边框的渲染。 filter是一个功能极其强大的属性，其实本质上是svg中的filter，但是CSS对其进行了一些简单函数的封装，不仅可以用于普通dom元素，还可以应用于svg元素。 参考链接：MDN filter属性">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/image-20211124223031439.png">
 <meta property="article:published_time" content="2021-11-24T14:16:00.000Z">
-<meta property="article:modified_time" content="2021-11-24T14:34:19.745Z">
+<meta property="article:modified_time" content="2022-01-17T11:26:51.962Z">
 <meta property="article:author" content="lay">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="CSS">
@@ -85,7 +85,7 @@
 		</nav>
 		<nav>
 			<ul style="font-size:12px; font-style:oblique; font-weight:100">
-				总文章数：21
+				总文章数：22
 			</ul>
 		</nav>
 		<br/>
@@ -213,6 +213,8 @@
         <h2 id="CSS中的filter"><a href="#CSS中的filter" class="headerlink" title="CSS中的filter"></a>CSS中的filter</h2><p><strong><code>filter</code></strong> CSS属性将模糊或颜色偏移等图形效果应用于元素。滤镜通常用于调整图像，背景和边框的渲染。</p>
 <p>filter是一个功能极其强大的属性，其实本质上是svg中的filter，但是CSS对其进行了一些简单函数的封装，不仅可以用于普通dom元素，还可以应用于svg元素。</p>
 <p>参考链接：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter">MDN filter属性</a></p>
+<span id="more"></span>
+
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* URL to SVG filter */</span></span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">url</span>(<span class="string">&quot;filters.svg#filter-id&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* &lt;filter-function&gt; values */</span></span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">blur</span>(<span class="number">5px</span>);</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">brightness</span>(<span class="number">0.4</span>);</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">contrast</span>(<span class="number">200%</span>);</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">drop-shadow</span>(<span class="number">16px</span> <span class="number">16px</span> <span class="number">20px</span> blue);</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">50%</span>);</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">hue-rotate</span>(<span class="number">90deg</span>);</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">invert</span>(<span class="number">75%</span>);</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">opacity</span>(<span class="number">25%</span>);</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">saturate</span>(<span class="number">30%</span>);</span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">sepia</span>(<span class="number">60%</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Multiple filters */</span></span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">contrast</span>(<span class="number">175%</span>) <span class="built_in">brightness</span>(<span class="number">3%</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Use no filter */</span></span><br><span class="line"><span class="attribute">filter</span>: none;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Global values */</span></span><br><span class="line"><span class="attribute">filter</span>: inherit;</span><br><span class="line"><span class="attribute">filter</span>: initial;</span><br><span class="line"><span class="attribute">filter</span>: unset;</span><br></pre></td></tr></table></figure>
 
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>用filter: drop-shadow属性为一个svg元素设置阴影属性</p>
@@ -341,6 +343,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2022/01/17/pedigree%E4%BB%8B%E7%BB%8D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          pedigree介绍
+        
+      </div>
+    </a>
   
   
     <a href="/2021/10/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E5%8E%9F%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
@@ -527,6 +538,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rpc</a>
               </li>
              
@@ -539,23 +554,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pipenv</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">切片</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">vue3</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">正则</a>
+                <a href="javascript:void(0)" class="js-tag color4">pedigree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pipenv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,6 +571,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">flask-apschduler</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">切片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">正则</a>
               </li>
              
               <li class="article-tag-list-item">
