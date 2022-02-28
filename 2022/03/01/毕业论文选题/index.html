@@ -6,18 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://mr-lay.github.io">
-  <title>Archives: 2021 | lay的博客</title>
+  <title>面向个人微信号的微信管理机器人的设计与实现 | lay的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="华南理工大学18级电子商务本科生">
-<meta property="og:type" content="website">
-<meta property="og:title" content="lay的博客">
-<meta property="og:url" content="https://mr-lay.github.io/archives/2021/page/2/index.html">
+  <meta name="description" content="面向个人微信号的微信管理机器人的设计与实现用户痛点与产品功能平常生活中你是不是遇到过这样的情况  忙着打游戏忘记回女朋友消息导致女朋友生气，又或者是摸鱼没及时回复老板消息被骂 微信群聊和联系人太多根本无法管理 用户太多重复问题，回复的心态爆炸，回慢了还要被投诉 需要同时联系很多用户，用户一个个性格迥异根本忙不过来 收集学生信息时，学生不看群消息迟迟不回复需要一个个私聊催，并且收集来的信息难以整合和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向个人微信号的微信管理机器人的设计与实现">
+<meta property="og:url" content="https://mr-lay.github.io/2022/03/01/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%E9%80%89%E9%A2%98/index.html">
 <meta property="og:site_name" content="lay的博客">
-<meta property="og:description" content="华南理工大学18级电子商务本科生">
+<meta property="og:description" content="面向个人微信号的微信管理机器人的设计与实现用户痛点与产品功能平常生活中你是不是遇到过这样的情况  忙着打游戏忘记回女朋友消息导致女朋友生气，又或者是摸鱼没及时回复老板消息被骂 微信群聊和联系人太多根本无法管理 用户太多重复问题，回复的心态爆炸，回慢了还要被投诉 需要同时联系很多用户，用户一个个性格迥异根本忙不过来 收集学生信息时，学生不看群消息迟迟不回复需要一个个私聊催，并且收集来的信息难以整合和">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.png">
+<meta property="og:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/image-20220301020351113.png">
+<meta property="article:published_time" content="2022-02-28T20:11:14.000Z">
+<meta property="article:modified_time" content="2022-02-28T20:11:49.001Z">
 <meta property="article:author" content="lay">
-<meta property="article:tag" content="华南理工大学18级电子商务本科生">
+<meta property="article:tag" content="vue3">
+<meta property="article:tag" content="wechaty">
+<meta property="article:tag" content="electron">
+<meta property="article:tag" content="robot">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/git_for_li/image-repo/raw/master/images/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png">
   
     <link rel="alternative" href="/atom.xml" title="lay的博客" type="application/atom+xml">
   
@@ -163,461 +172,286 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-毕业论文选题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面向个人微信号的微信管理机器人的设计与实现
+    </h1>
+  
+
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.5k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">8分</span>
+      </span>
+    </span>
+</div>
+
+        
+        
+        <a href="/2022/03/01/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%E9%80%89%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2022-02-28T20:11:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-01</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="面向个人微信号的微信管理机器人的设计与实现"><a href="#面向个人微信号的微信管理机器人的设计与实现" class="headerlink" title="面向个人微信号的微信管理机器人的设计与实现"></a>面向个人微信号的微信管理机器人的设计与实现</h1><h2 id="用户痛点与产品功能"><a href="#用户痛点与产品功能" class="headerlink" title="用户痛点与产品功能"></a>用户痛点与产品功能</h2><p>平常生活中你是不是遇到过这样的情况</p>
+<ol>
+<li>忙着打游戏忘记回女朋友消息导致女朋友生气，又或者是摸鱼没及时回复老板消息被骂</li>
+<li>微信群聊和联系人太多根本无法管理</li>
+<li>用户太多重复问题，回复的心态爆炸，回慢了还要被投诉</li>
+<li>需要同时联系很多用户，用户一个个性格迥异根本忙不过来</li>
+<li>收集学生信息时，学生不看群消息迟迟不回复需要一个个私聊催，并且收集来的信息难以整合和处理，即使是用问卷星和腾讯文档，也总会有几个“漏网之鱼”令人揪心</li>
+</ol>
+<p>如果有的话，那么恭喜你，一个面向个人微信号的微信管理机器人，wego来了</p>
+<p>wego可以帮助你管理你的个人微信号，它的功能如下：</p>
+<ol>
+<li>联系人管理，设置关键字自动通过好友添加、批量为好友添加标签分组</li>
+<li>群组管理，加群管理、群公告管理、群消息管理、群成员管理</li>
+<li>自动回复，低智商对话、关键字自动回复、趣味对话、替你向女朋友说情话</li>
+<li>定时任务，定时执行消息推送任务</li>
+<li>数据收集，批量向学生发送消息，根据学生回复收集数据，自动催促，并且提供一定的数据可视化功能</li>
+</ol>
+<p><escape><span id="more"></span></escape></p>
+<h2 id="产品框架与结构"><a href="#产品框架与结构" class="headerlink" title="产品框架与结构"></a>产品框架与结构</h2><h3 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h3><p>wego的系统架构主要分为五层，这五层承担着不同的功能</p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>是最重要的一层，主要面向用户，提供了绝大多数的功能，包括联系人和群组管理、配置自动任务等等功能，用户可以在此配置自己的微信机器人，包括群组管理、自动回复、定时任务等，应用层把微信相关指令发送给下一层执行。由electron构建的桌面应用实现。</p>
+<h4 id="接口层"><a href="#接口层" class="headerlink" title="接口层"></a>接口层</h4><p>接口层负责与微信通信，采用hook技术，捕获微信的各种消息，接受应用层的指令，并且传递给系统层。由wechaty+wechaty-puppet-xp实现。</p>
+<h4 id="系统层"><a href="#系统层" class="headerlink" title="系统层"></a>系统层</h4><p>系统层指的是window系统和指定的微信版本</p>
+<h4 id="服务层"><a href="#服务层" class="headerlink" title="服务层"></a>服务层</h4><p>服务层为用户提供基础的数据备份和数据同步功能，由python-flask实现。</p>
+<h4 id="数据层"><a href="#数据层" class="headerlink" title="数据层"></a>数据层</h4><p>提供数据持久化，由mysql实现。</p>
+<p><img src="https://gitee.com/git_for_li/image-repo/raw/master/images/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84.png" alt="系统架构"></p>
+<h3 id="系统设计与实现"><a href="#系统设计与实现" class="headerlink" title="系统设计与实现"></a>系统设计与实现</h3><ol>
+<li>用户登录指定版本的微信</li>
+<li>用户启动wego，wego唤醒wechaty机器人</li>
+<li>wego获取到微信登录状态，如果未登录，提醒用户扫码登录</li>
+<li>wego获取用户微信联系人、群组数据</li>
+<li>用户在wego上配置自动执行任务，包括自动回复、定时任务、数据收集等等</li>
+<li>wego收到任务，捕获监听微信消息</li>
+<li>满足条件（时间、关键字等等）wego执行用户设置的任务</li>
+<li>wego数据与云端同步</li>
+</ol>
+<p><img src="https://gitee.com/git_for_li/image-repo/raw/master/images/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.png" alt="系统设计与实现"></p>
+<h2 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h2><h3 id="wechaty"><a href="#wechaty" class="headerlink" title="wechaty"></a>wechaty</h3><p>wechaty是一个 用于构建聊天机器人的开源软件应用程序，它可以使用短短几行代码，把一个个人聊天软件变成一个聊天机器人。wechaty为聊天机器人所需的常用功能提供了一些开箱即用的服务，利用它可以非常简单的实现如下功能：</p>
+<ol>
+<li>消息处理</li>
+<li>联系人和群组管理</li>
+<li>智能对话管理</li>
+</ol>
+<p>wechaty不仅提供了强大的操作聊天软件的功能，并且还支持不同语种，如nodejs、Python等常见语言。wechaty具有非常好的可扩展性，根据wechaty提供的API，可以自由定制自己的聊天机器人。</p>
+<p>puppet是wechaty的一个抽象接口，用来帮助wechaty实现对微信的操作，puppet的中文意思是“傀儡”，形象的表达了puppet要完成的事，不同的puppet提供了不同的微信协议支持，比如wechaty-puppet-padchat就是利用微信ipad协议实现对微信的操控</p>
+<p><img src="https://gitee.com/git_for_li/image-repo/raw/master/images/image-20220301020351113.png" alt="image-20220301020351113"></p>
+<p>wechaty-puppet-xp为wechaty提供了一种基于windows版本的微信puppet协议，采用hook技术，去捕获微信win版本所发出去和收到的消息，实现对微信的操作和控制，用户只需要在指定的微信版本上登录自己的微信号，wechaty-puppet-xp就可以开始工作了。</p>
+<p>wechaty+wechaty-puppet-xp是目前最适合用于操作微信的工具，wechaty提供了非常便捷且强大的API，而xp则提供了一个免费稳定的puppet协议，使用它们只需要一个装有指定微信版本的windows电脑，相信绝大多数用户都能做到，这比不能登录的网页版协议和需要高昂费用的ipad协议好上太多。</p>
+<h3 id="electron"><a href="#electron" class="headerlink" title="electron"></a>electron</h3><p>Electron是一个使用 JavaScript、HTML 和 CSS 构建桌面应用程序的框架，著名的VSCode也是用electron构建的。electron通过内嵌chromium和nodejs到二进制文件中，实现把一个web页面变成一个可以在Windows、Linux、macOs上运行的跨平台应用。开发electron应用与开发一般的web网页几乎没有任何区别，也仅仅只是需要了解一些javascript、html技术就可以快速搭建一个跨平台的桌面应用程序。</p>
+<p>由于wechaty需要在windows系统上运行，因此构建一个web应用并不是一个好的选择，因为这样wechaty几乎没有什么好办法与浏览器页面进行沟通，因此使用electron去构建一个windows桌面应用，然后把wechaty内嵌进这个桌面应用当中，比起前者要好上不少，即使因为electron对于原生nodejs模块的限制，导致wechaty并不能与electron兼容，至少用户不需要同时使用浏览器应用和桌面应用了。</p>
+<h3 id="其他通用技术"><a href="#其他通用技术" class="headerlink" title="其他通用技术"></a>其他通用技术</h3><h4 id="vue3-elementUI"><a href="#vue3-elementUI" class="headerlink" title="vue3+elementUI"></a>vue3+elementUI</h4><p>vue3是一款相当流行的前端开发框架，响应式数据和便捷的API可以大大节省开发时间和精力，据说比起传统的老三样js、html、css，vue3至少能减少70%的代码量。vue3具有非常优秀的社区和生态环境，有多种配套工具，如vite、vueRouter、vuex等等。</p>
+<p>elementUI是由饿了么团队研发的UI组件，使用方便，功能丰富，界面美观</p>
+<h4 id="python-flask"><a href="#python-flask" class="headerlink" title="python-flask"></a>python-flask</h4><p>python-flask是一款轻量的后端服务器搭建框架，简单的几行代码即可构建一个功能丰富的后端服务器</p>
+<h4 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h4><p>提供标准的关系型数据库存储功能</p>
+<h2 id="面临的现状与困境"><a href="#面临的现状与困境" class="headerlink" title="面临的现状与困境"></a>面临的现状与困境</h2><h3 id="微信的打压"><a href="#微信的打压" class="headerlink" title="微信的打压"></a>微信的打压</h3><p>在过去微信web版还能使用时，微信机器人行业还是一片欣欣向荣，出现了许多提供微信机器人的开源作品，比如itchat、vbot和我现在使用的wechaty。但是之后，微信逐渐对一些协议进行限制，目前已经关停了微信网页版的登录，绝大多数微信账号都出现了无法登录网页版微信的情况，即使是登录了，也很容易出现掉线的情况，之后行业内就一片哀号遍野，各种基于网页版协议的微信机器人死的死伤的伤。比如wetool，就被微信封禁打压了。除开网络协议，其余能用的比如我现在使用的windows协议，本质上也是hook技术，说白了就是逆向破解，其实也是存在一定的封号危险的，总有一天，windows协议也将无法使用。好在wechaty将puppet分离了，也就是说当xp被封禁之后，项目无需重写，只需要更换可用的puppet协议即可。</p>
+<p>但是以上情况仅仅只是针对个人微信号机器人的情况，像微信公众号、微信小程序和企业微信都是可以接入和使用官方的机器人服务的。看的出来，微信官方主动限制了微信机器人的使用，我觉得大概率是为了防止无限制的使用，不说企业微信，像微信公众号、小程序的申请和运营都是有一定的限制和要求的，接入官方的机器人服务也只是提供了一些便利而已，如果放开了微信个人使用的话，微信机器人很容易被拿来当作违法的工具，这是微信不想看到的。</p>
+<p>“自由如果不加以限制，一定会导致强者对弱者的剥削。”   ———罗翔</p>
+<h3 id="wechaty与electron的兼容性问题"><a href="#wechaty与electron的兼容性问题" class="headerlink" title="wechaty与electron的兼容性问题"></a>wechaty与electron的兼容性问题</h3><p>Electron 支持原生 Node.js 模块，但由于 Electron 具有与给定 Node.js 二进制文件不同的 应用程序二进制接口 (ABI)（由于使用 Chromium 的 BoringSSL 而不是 OpenSSL 等差异），因此我们使用的原生模块将需要为 Electron 重新编译。否则，当运行electron应用程序时，将收到以下类别的错误：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Error: The module <span class="string">&#x27;/path/to/native/module.node&#x27;</span></span><br><span class="line">was compiled against a different Node.js version using</span><br><span class="line">NODE_MODULE_VERSION <span class="variable">$XYZ</span>. This version of Node.js requires</span><br><span class="line">NODE_MODULE_VERSION <span class="variable">$ABC</span>. Please try re-compiling or re-installing</span><br><span class="line">the module (<span class="keyword">for</span> instance, using `npm rebuild` or `npm install`).</span><br></pre></td></tr></table></figure>
+
+<p>而wechaty-puppet-xp所需要用到一个叫frida的工具，这个工具官方并没有提供除nodejs版本10、12、14以外的编译文件，也就是说，如果我要让frida为electron工作，我必须使用指定的nodejs版本，否则我需要手动编译相关的dll或者so文件（我完全不懂）。令人痛苦的是，wechaty要求node版本必须大于等于16，也就是说，我遇到了一个死结。目前我还没有想到能够优雅的解决这个冲突问题的办法，我能做的只有把wechaty与electron分开运行。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/04/DNS-Python/" class="archive-article-date">
-  	<time datetime="2021-09-04T12:52:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/04/DNS-Python/">DNS-Python</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DNS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vue3</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">wechaty</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">electron</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">robot</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/04/kafka/" class="archive-article-date">
-  	<time datetime="2021-09-04T12:32:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/04/kafka/">kafka</a>
-    </h1>
-  
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kafka</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">kafka-python</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://mr-lay.github.io/2022/03/01/%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%E9%80%89%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
+    
+        <span class="archive-article-date">
+			阅读量 <span id="busuanzi_value_page_pv"></span>
+		</span>
+    
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/04/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9F%9F%E5%90%8D%E6%89%AB%E6%8F%8F/" class="archive-article-date">
-  	<time datetime="2021-09-04T12:27:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/01/17/pedigree%E4%BB%8B%E7%BB%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pedigree介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/04/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%9F%9F%E5%90%8D%E6%89%AB%E6%8F%8F/">高并发域名扫描</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">高并发</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">EDNS解析</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">异步请求</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E4%B8%AA%E4%BA%BA%E5%BE%AE%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%BE%AE%E4%BF%A1%E7%AE%A1%E7%90%86%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">面向个人微信号的微信管理机器人的设计与实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%97%9B%E7%82%B9%E4%B8%8E%E4%BA%A7%E5%93%81%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.</span> <span class="toc-text">用户痛点与产品功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A7%E5%93%81%E6%A1%86%E6%9E%B6%E4%B8%8E%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">产品框架与结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-number">1.2.1.</span> <span class="toc-text">系统架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">应用层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%B1%82"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">接口层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%B1%82"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">系统层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%B1%82"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">服务层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B1%82"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">数据层</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.2.</span> <span class="toc-text">系统设计与实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text">核心技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wechaty"><span class="toc-number">1.3.1.</span> <span class="toc-text">wechaty</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#electron"><span class="toc-number">1.3.2.</span> <span class="toc-text">electron</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.3.</span> <span class="toc-text">其他通用技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vue3-elementUI"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">vue3+elementUI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-flask"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">python-flask</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mysql"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">mysql</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E4%B8%B4%E7%9A%84%E7%8E%B0%E7%8A%B6%E4%B8%8E%E5%9B%B0%E5%A2%83"><span class="toc-number">1.4.</span> <span class="toc-text">面临的现状与困境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E7%9A%84%E6%89%93%E5%8E%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">微信的打压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wechaty%E4%B8%8Eelectron%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.2.</span> <span class="toc-text">wechaty与electron的兼容性问题</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/04/pipenv/" class="archive-article-date">
-  	<time datetime="2021-09-04T12:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/04/pipenv/">pipenv</a>
-    </h1>
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pipenv</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/04/iGet%E6%8B%A8%E6%B5%8B/" class="archive-article-date">
-  	<time datetime="2021-09-04T11:31:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/04/iGet%E6%8B%A8%E6%B5%8B/">iGet拨测</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rpc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">分布式架构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">高并发高负载</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/02/hexo%E9%83%A8%E7%BD%B2%E6%8A%A5%E9%94%99/" class="archive-article-date">
-  	<time datetime="2021-09-02T15:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/02/hexo%E9%83%A8%E7%BD%B2%E6%8A%A5%E9%94%99/">hexo部署报错</a>
-    </h1>
+  <div id="SOHUCS" sid="毕业论文选题" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "true",
+        conf: "true"
+    });
+</script>
+</script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">踩坑</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2021-09-02T15:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">正则</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/02/%E7%9F%A5%E8%AF%86%E9%93%BE%E6%8E%A5/" class="archive-article-date">
-  	<time datetime="2021-09-02T15:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/02/%E7%9F%A5%E8%AF%86%E9%93%BE%E6%8E%A5/">前端知识链接</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/02/python%E5%88%87%E7%89%87/" class="archive-article-date">
-  	<time datetime="2021-09-02T14:46:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/02/python%E5%88%87%E7%89%87/">python切片</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">切片</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/08/31/%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2021-08-31T05:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/31/%E7%AE%97%E6%B3%95/">算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2021/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2021/page/3/">3</a><a class="extend next" rel="next" href="/archives/2021/page/3/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -647,8 +481,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
